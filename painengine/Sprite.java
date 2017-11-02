@@ -12,7 +12,10 @@ public class Sprite
 	private int height;
 
 	public Sprite(int x, int y, int width, int height){
-
+		setX(x);
+		setY(y);
+		setWidth(width);
+		setHeight(height);
 	}
 
 	public void setX(int x) {this.x = x;}
