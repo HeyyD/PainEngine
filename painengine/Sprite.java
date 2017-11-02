@@ -1,58 +1,26 @@
-package model;
-
+package painengine;
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
+	Base for GameObject class
  */
 
 public class Sprite
 {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
 	private int x;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
 	private int y;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
 	private int width;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
 	private int height;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
-	public Sprite(){
-		super();
+	public Sprite(int x, int y, int width, int height){
+
 	}
 
+	public void setX(int x) {this.x = x;}
+	public int getX() {return this.x;}
+	public void setY(int y) {this.y = y;}
+	public int getY() {return this.y;}
+	public void setWidth(int width) {this.width = width;}
+	public int getWidth() {return this.width;}
+	public void setHeight(int height) {this.height = height;}
+	public int getHeight() {return this.height;}
 }
-
