@@ -18,6 +18,10 @@ public class Sprite
 		setHeight(height);
 	}
 
+	public void draw(){
+		
+	}
+
 	public void setX(int x) {this.x = x;}
 	public int getX() {return this.x;}
 	public void setY(int y) {this.y = y;}

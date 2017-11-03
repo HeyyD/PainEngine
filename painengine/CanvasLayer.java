@@ -4,30 +4,23 @@ import java.util.List;
 
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
+	Used to draw all the Sprites on the layer on to the
+	Canvas.
  */
 
 public class CanvasLayer
 {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
+	/**Host canvas that the layer is drawn on */
+	private Canvas host;
 	private List<Sprite> sprites;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
-	public CanvasLayer(){
-		super();
+	public CanvasLayer(Canvas host){
+		this.host = host;
 	}
 
+	public void drawLayer(){
+		for(Sprite s: sprites)
+			s.draw();
+	}
 }
 
