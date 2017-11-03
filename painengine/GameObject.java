@@ -17,5 +17,9 @@ public class GameObject extends Sprite
 	public GameObject(int x, int y, int width, int height){
 		super(x, y, width, height);
 	}
+
+	public void addComponent(Component c){
+		components.add(c);
+	}
 }
 
