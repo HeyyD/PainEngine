@@ -1,22 +1,18 @@
 package painengine;
 
-
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
+	Game class is responsible of running the game. It draws
+	the content of Screen
  */
 
-public class Game
+public abstract class Game
 {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
+
 	public Game(){
 		super();
 	}
+
+	public abstract void start(Screen screen);
 
 }
 
