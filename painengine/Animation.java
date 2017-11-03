@@ -1,5 +1,5 @@
-package model;
-import model.util.SpriteSheet;
+package painengine;
+import painengine.util.SpriteSheet;
 
 
 /**
