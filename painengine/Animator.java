@@ -1,4 +1,4 @@
-package model;
+package painengine;
 import java.util.LinkedList;
 import java.util.List;
 
