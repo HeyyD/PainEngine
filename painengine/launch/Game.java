@@ -6,6 +6,9 @@ import painengine.Screen;
 	extends it from desired class.
  */
 
-public abstract class Game extends Launcher{
+public class Game extends Launcher{
+	protected Game(){
+		System.out.println("Jee");
+	}
 }
 
