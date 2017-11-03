@@ -1,33 +1,25 @@
-package model;
+package painengine;
+
 import java.util.LinkedList;
 import java.util.List;
 
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
+	GameObjects can store multiple components that can modify how
+	the GameObject behaves.
  */
 
 public class GameObject extends Sprite
 {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
+
 	private List<Component> components;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
-	public GameObject(){
-		super();
+	public GameObject(int x, int y, int width, int height){
+		super(x, y, width, height);
 	}
 
+	public void addComponent(Component c){
+		components.add(c);
+	}
 }
 
