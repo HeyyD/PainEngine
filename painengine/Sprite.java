@@ -1,9 +1,12 @@
 package painengine;
 import java.awt.Color;
-import java.awt.Image;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.geom.AffineTransform;
+
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 import painengine.launch.Game;
 
@@ -18,7 +21,7 @@ public class Sprite
 	private int width;
 	private int height;
 	private Color color;
-	private Image image;
+	private BufferedImage image;
 
 	public Sprite(){
 		setX(10);
@@ -64,6 +67,16 @@ public class Sprite
 	public int getHeight() {return this.height;}
 	public void setColor(Color color) {this.color = color;}
 	public Color getColor() {return this.color;}
-	public void setImage(Image image) {this.image = image;}
-	public Image getImage() {return this.image;}
+	public BufferedImage getImage() {return this.image;}
+
+	public void setImage(String filepath) {
+
+		try{
+			File file = new File(filepath);
+			BufferedImage image = ImageIO.read(file);
+			this.image = image;
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+	}
 }

@@ -8,7 +8,7 @@ import java.awt.Component;
 	extends it from desired class.
  */
 
-public abstract class Game extends Component{
+public abstract class Game{
 
     private static Screen screen;
 
