@@ -1,5 +1,5 @@
 package painengine;
-
+import javax.swing.JFrame;
 
 /**
  * <!-- begin-user-doc -->
@@ -7,25 +7,20 @@ package painengine;
  * @generated
  */
 
-public class Screen
-{
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
+public class Screen extends JFrame
+{	
 	private Canvas canvas;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
 	public Screen(){
-		super();
+		createDefaultScreen();
 	}
 
+	private void createDefaultScreen(){
+		setTitle("PainEngine Game");
+		setSize(600, 600);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
+	}
 }
 
