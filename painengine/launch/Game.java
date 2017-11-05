@@ -9,7 +9,7 @@ import painengine.Screen;
 
 public abstract class Game{
 
-    Screen screen;
+    private Screen screen;
 
     public Game(){
         setScreen(new Screen());

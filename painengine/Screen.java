@@ -26,11 +26,11 @@ public class Screen extends JFrame
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setCanvas(new Canvas(600, 600));
-		CanvasLayer l = new CanvasLayer(canvas);
 		canvas.setBackground(Color.BLACK);
-		canvas.addLayer(l);
 		add(canvas);
 		setVisible(true);
 	}
+
+	public Canvas getCanvas(){return this.canvas;}
 }
 

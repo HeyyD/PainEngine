@@ -1,10 +1,14 @@
 package demo;
 import painengine.launch.Game;
 import painengine.Screen;
+import painengine.Sprite;
+import painengine.GameObject;
+
 
 public class MyGame extends Game{
+
     @Override
     public void start(Screen screen){
-        System.out.println("start");
+        screen.getCanvas().addSprite(new GameObject());
     }
 }

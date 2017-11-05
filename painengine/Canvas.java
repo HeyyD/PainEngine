@@ -2,7 +2,7 @@ package painengine;
 import javax.swing.JPanel;
 import java.util.LinkedList;
 import java.util.List;
-
+import java.awt.Graphics;
 
 /**
 	Canvas contains all the Sprites and gameobjects that are
@@ -17,7 +17,7 @@ public class Canvas extends JPanel
 	private int width;
 	private int height;
 
-	private List<CanvasLayer> layers = new LinkedList<>();
+	private List<Sprite> sprites = new LinkedList<>();
 
 	public Canvas(int width, int height){
 		setWidth(width);
@@ -25,12 +25,18 @@ public class Canvas extends JPanel
 	}
 
 	public void drawCanvas(){
-		for(CanvasLayer l: layers)
-			l.drawLayer();
+		
 	}
 
-	public void addLayer(CanvasLayer layer){
-		layers.add(layer);
+	@Override
+	protected void paintComponent(Graphics g){
+		super.paintComponent(g);
+		for(Sprite s: sprites)
+			s.draw(g);
+	}
+
+	public void addSprite(Sprite sprite){
+		sprites.add(sprite);
 	}
 
 	public void setWidth(int width){
