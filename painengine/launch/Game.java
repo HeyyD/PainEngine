@@ -13,6 +13,7 @@ public abstract class Game{
 
     public Game(){
         setScreen(new Screen());
+        init();
         start(screen);
     }
 

@@ -1,4 +1,5 @@
 package painengine;
+import javax.swing.JPanel;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,17 +11,26 @@ import java.util.List;
 	drawn on top of eachother.
  */
 
-public class Canvas
+public class Canvas extends JPanel
 {
 
 	private int width;
 	private int height;
 
-	private List<CanvasLayer> layers;
+	private List<CanvasLayer> layers = new LinkedList<>();
 
 	public Canvas(int width, int height){
 		setWidth(width);
 		setHeight(height);
+	}
+
+	public void drawCanvas(){
+		for(CanvasLayer l: layers)
+			l.drawLayer();
+	}
+
+	public void addLayer(CanvasLayer layer){
+		layers.add(layer);
 	}
 
 	public void setWidth(int width){
