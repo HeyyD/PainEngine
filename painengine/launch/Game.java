@@ -1,5 +1,6 @@
 package painengine.launch;
 import painengine.Screen;
+import java.awt.Component;
 
 /**
 	Game class is responsible of running the game. It draws
@@ -7,9 +8,9 @@ import painengine.Screen;
 	extends it from desired class.
  */
 
-public abstract class Game{
+public abstract class Game extends Component{
 
-    private Screen screen;
+    private static Screen screen;
 
     public Game(){
         setScreen(new Screen());
@@ -19,6 +20,10 @@ public abstract class Game{
 
     public void setScreen(Screen screen){
         this.screen = screen;
+    }
+
+    public static Screen getScreen(){
+        return screen;
     }
 
     public void init(){}
