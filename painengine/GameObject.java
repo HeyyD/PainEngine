@@ -14,6 +14,10 @@ public class GameObject extends Sprite
 
 	private List<Component> components;
 
+	public GameObject(){
+		super();
+	}
+
 	public GameObject(int x, int y, int width, int height){
 		super(x, y, width, height);
 	}
