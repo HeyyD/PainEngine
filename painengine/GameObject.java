@@ -12,7 +12,7 @@ import java.util.List;
 public class GameObject extends Sprite
 {
 
-	private List<Component> components;
+	private List<Component> components = new LinkedList<>();
 
 	public GameObject(){
 		super();
