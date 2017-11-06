@@ -25,6 +25,7 @@ public class Screen extends JFrame
 		setSize(600, 600);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setFocusable(true);
 		setCanvas(new Canvas(600, 600));
 		canvas.setBackground(Color.BLACK);
 		add(canvas);
