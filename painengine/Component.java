@@ -1,14 +1,9 @@
 package painengine;
 
-
-
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
+    Every component implements Component inteface
  */
-public  interface Component 
-{
-
+public  interface Component {
+    public abstract void run();
 }
 

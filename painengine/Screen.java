@@ -28,6 +28,7 @@ public class Screen extends JFrame
 		setCanvas(new Canvas(600, 600));
 		canvas.setBackground(Color.BLACK);
 		add(canvas);
+		setFocusable(true);
 		setVisible(true);
 	}
 
