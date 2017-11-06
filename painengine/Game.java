@@ -1,6 +1,5 @@
-package painengine.launch;
+package painengine;
 import painengine.Screen;
-import java.awt.Component;
 
 /**
 	Game class is responsible of running the game. It draws

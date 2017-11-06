@@ -1,19 +1,14 @@
 package painengine;
 
-
 /**
  * <!-- begin-user-doc -->
  * <!--  end-user-doc  -->
  * @generated
  */
 
-public class KeyController implements Component
+public class KeyController implements GameComponent
 {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
+
 	public KeyController(){
 		super();
 	}

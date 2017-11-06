@@ -1,4 +1,7 @@
 package painengine;
+
+import painengine.gameobject.Sprite;
+
 import javax.swing.JPanel;
 import java.util.LinkedList;
 import java.util.List;

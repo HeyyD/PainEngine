@@ -1,4 +1,4 @@
-package painengine;
+package painengine.gameobject;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
 public class GameObject extends Sprite
 {
 
-	private List<Component> components;
+	private List<GameComponent> components;
 
 	public GameObject(){
 		super();
@@ -22,7 +22,7 @@ public class GameObject extends Sprite
 		super(x, y, width, height);
 	}
 
-	public void addComponent(Component c){
+	public void addComponent(GameComponent c){
 		components.add(c);
 	}
 }

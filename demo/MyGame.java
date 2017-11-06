@@ -1,8 +1,8 @@
 package demo;
-import painengine.launch.Game;
+import painengine.Game;
 import painengine.Screen;
-import painengine.Sprite;
-import painengine.GameObject;
+import painengine.gameobject.Sprite;
+import painengine.gameobject.GameObject;
 import java.awt.Image;
 
 
