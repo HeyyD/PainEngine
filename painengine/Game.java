@@ -1,5 +1,6 @@
 package painengine;
 import painengine.Screen;
+import painengine.gameobject.GameObject;
 
 /**
 	Game class is responsible of running the game. It draws
@@ -15,6 +16,23 @@ public abstract class Game{
         setScreen(new Screen());
         init();
         start(screen);
+        gameLoop();
+    }
+
+    private void gameLoop(){
+        Thread t = new Thread(() -> {
+            while(true){
+                for(GameObject go: screen.getCanvas().getGameObjects())
+                    go.update();
+
+                try{
+                    Thread.sleep(10);
+                } catch(InterruptedException e){
+                    e.printStackTrace();
+                }
+            }
+        });
+        t.start();
     }
 
     public void setScreen(Screen screen){

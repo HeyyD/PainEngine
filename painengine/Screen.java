@@ -16,10 +16,6 @@ public class Screen extends JFrame
 		createDefaultScreen();
 	}
 
-	public void setCanvas(Canvas canvas){
-		this.canvas = canvas;
-	}
-
 	private void createDefaultScreen(){
 		setTitle("PainEngine Game");
 		setSize(600, 600);
@@ -34,5 +30,6 @@ public class Screen extends JFrame
 	}
 
 	public Canvas getCanvas(){return this.canvas;}
+	public void setCanvas(Canvas canvas){this.canvas = canvas;}
 }
 

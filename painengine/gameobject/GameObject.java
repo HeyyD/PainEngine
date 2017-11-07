@@ -14,7 +14,7 @@ import java.util.List;
 public class GameObject extends Controllable
 {
 
-	private List<Component> components = new LinkedList<>();
+	private List<GameComponent> components = new LinkedList<>();
 
 	public GameObject(){
 		super();
@@ -30,6 +30,10 @@ public class GameObject extends Controllable
 
 	public void startListening(){
 		Game.getScreen().addKeyListener(this);
+	}
+
+	public void update(){
+		
 	}
 }
 
