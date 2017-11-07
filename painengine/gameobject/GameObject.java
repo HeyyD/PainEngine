@@ -1,4 +1,6 @@
-package painengine;
+package painengine.gameobject;
+
+import painengine.Game;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -9,7 +11,7 @@ import java.util.List;
 	the GameObject behaves.
  */
 
-public class GameObject extends Sprite
+public class GameObject extends Controllable
 {
 
 	private List<Component> components = new LinkedList<>();
@@ -22,8 +24,12 @@ public class GameObject extends Sprite
 		super(x, y, width, height);
 	}
 
-	public void addComponent(Component c){
+	public void addComponent(GameComponent c){
 		components.add(c);
+	}
+
+	public void startListening(){
+		Game.getScreen().addKeyListener(this);
 	}
 }
 
