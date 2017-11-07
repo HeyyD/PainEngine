@@ -1,4 +1,6 @@
-package painengine;
+package painengine.gameobject;
+
+import java.awt.Component;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -8,13 +10,13 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
-import painengine.launch.Game;
+import painengine.Game;
 
 /**
 	Base for GameObject class
  */
 
-public class Sprite
+public class Sprite extends Component
 {
 	private int x;
 	private int y;
