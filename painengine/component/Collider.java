@@ -34,5 +34,13 @@ public class Collider extends GameComponent
 	public void run(){
 		collider.setBounds(host.getX(), host.getY(), host.getWidth(), host.getHeight());
 	}
+
+	public boolean collides(){
+		for(Rectangle r: colliders){
+			if(!r.equals(collider) && collider.intersects(r))
+				return true;
+		}
+		return false;
+	}
 }
 
