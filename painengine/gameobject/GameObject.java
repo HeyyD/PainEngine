@@ -30,6 +30,11 @@ public class GameObject extends Controllable
 		c.init(this);
 	}
 
+	public void removeComponent(GameComponent c){
+		c.remove();
+		components.remove(c);
+	}
+
 	public void startListening(){
 		Game.getScreen().addKeyListener(this);
 	}

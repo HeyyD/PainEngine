@@ -13,6 +13,8 @@ public abstract class GameComponent {
         start();
     }
 
+    public abstract void remove();
+    
     protected abstract void start();
 
     public void run(){
