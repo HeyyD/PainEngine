@@ -1,6 +1,7 @@
 package painengine.gameobject;
 
 import painengine.Game;
+import painengine.component.GameComponent;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -26,6 +27,7 @@ public class GameObject extends Controllable
 
 	public void addComponent(GameComponent c){
 		components.add(c);
+		c.init(this);
 	}
 
 	public void startListening(){
@@ -33,7 +35,9 @@ public class GameObject extends Controllable
 	}
 
 	public void update(){
-		
+
 	}
+
+	public List<GameComponent> getComponents(){return this.components;}
 }
 
