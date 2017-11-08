@@ -38,8 +38,6 @@ public class Canvas extends JPanel
 		super.paintComponent(g);
 		for(Sprite s: sprites)
 			s.draw(g);
-
-		repaint();
 	}
 
 	public void addSprite(Sprite sprite){
