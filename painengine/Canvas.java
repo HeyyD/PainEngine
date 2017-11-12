@@ -29,10 +29,6 @@ public class Canvas extends JPanel
 		setHeight(height);
 	}
 
-	public void drawCanvas(){
-		
-	}
-
 	@Override
 	protected void paintComponent(Graphics g){
 		super.paintComponent(g);
