@@ -22,10 +22,10 @@ public class Screen extends JFrame
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setFocusable(true);
-		Canvas canvas = new Canvas(600, 600);
+		Canvas canvas = new Canvas(600,600);
 		canvas.setBackground(Color.BLACK);
-		stage = new Stage(canvas);
-		this.add(stage.getCanvas());
+		setStage(new Stage(canvas));
+		add(stage.getCanvas());
 		setFocusable(true);
 		setVisible(true);
 	}

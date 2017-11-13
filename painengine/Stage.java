@@ -6,23 +6,12 @@ package painengine;
     when switching levels.
  */
 public class Stage{
-
     private Canvas canvas;
-
-    public Stage(){
-
-    }
 
     public Stage(Canvas canvas){
         this.canvas = canvas;
     }
 
-    public void setCanvas(Canvas canvas){
-        this.canvas = canvas;
-    }
-
-    public Canvas getCanvas(){
-        return this.canvas;
-    }
-
+    public void setCanvas(Canvas canvas) {this.canvas = canvas;}
+    public Canvas getCanvas() {return this.canvas;}
 }
