@@ -56,7 +56,7 @@ public class Sprite extends Component
 
 	private void drawImage(Graphics g){
 		Graphics2D g2D = (Graphics2D) g;
-		g2D.drawImage(image, x, y, width, height, Game.getScreen());
+		g2D.drawImage(image, x, y, width, height, null);
 	}
 
 	public void setX(int x) {this.x = x;}

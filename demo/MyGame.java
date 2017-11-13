@@ -10,7 +10,8 @@ public class MyGame extends Game{
     @Override
     public void start(Screen screen){
         Player player = new Player(50, 50, 100, 200);
-        screen.getStage().getCanvas().addSprite(player);
+        screen.getCanvas().addSprite(player);
+        player.startListening(screen);
 
         Enemy enemy = new Enemy(500, 500, 50, 50);
         screen.getStage().getCanvas().addSprite(enemy);
