@@ -1,6 +1,7 @@
 package painengine.gameobject;
 
 import painengine.Game;
+import painengine.Screen;
 import painengine.component.GameComponent;
 
 import java.util.LinkedList;
@@ -37,8 +38,8 @@ public abstract class GameObject extends Controllable
 		components.remove(c);
 	}
 
-	public void startListening(){
-		Game.getScreen().addKeyListener(this);
+	public void startListening(Screen screen){
+		screen.addKeyListener(this);
 	}
 
 	public abstract void start();
