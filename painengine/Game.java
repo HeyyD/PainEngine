@@ -50,7 +50,7 @@ public abstract class Game{
         return screen;
     }
 
-    public void init(){}
+    public abstract void init();
     public void stop(){}
     public abstract void start(Screen screen);
 

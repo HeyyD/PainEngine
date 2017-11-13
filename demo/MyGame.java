@@ -7,9 +7,15 @@ import painengine.gameobject.GameObject;
 
 public class MyGame extends Game{
 
+    private Player player;
+
+
     @Override
+    public void init(){
+        player = new Player(50, 50, 100, 200);
+    }
+
     public void start(Screen screen){
-        Player player = new Player(50, 50, 100, 200);
         screen.getCanvas().addSprite(player);
         player.startListening(screen);
 
