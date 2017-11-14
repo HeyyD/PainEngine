@@ -1,27 +1,22 @@
 package demo;
 import painengine.Game;
 import painengine.Screen;
+import painengine.Stage;
+import painengine.Canvas;
 import painengine.gameobject.Sprite;
 import painengine.gameobject.GameObject;
 
 
 public class MyGame extends Game{
 
-    private Player player;
-    private Enemy enemy;
-
-    private DemoStage demoStage;
+    private Stage demoStage;
 
     @Override
     public void init(){
-        player = new Player(50, 50, 100, 200);
-        enemy = new Enemy(500, 500, 50, 50);
+        demoStage = new DemoStage(new Canvas(600, 600));
     }
 
     public void start(Screen screen){
-        screen.getStage().addGameObject(player);
-        player.startListening(screen);
-
-        screen.getStage().addGameObject(enemy);
+        screen.setStage(demoStage);
     }
 }

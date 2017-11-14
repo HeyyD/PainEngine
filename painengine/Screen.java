@@ -31,6 +31,14 @@ public class Screen extends JFrame
 	}
 
 	public Stage getStage(){return this.stage;}
-	public void setStage(Stage stage){this.stage = stage;}
+
+	public void setStage(Stage stage){
+		if(this.stage != null)
+			remove(this.stage.getCanvas());
+
+		add(stage.getCanvas());
+		invalidate(); validate();
+		this.stage = stage;
+	}
 }
 
