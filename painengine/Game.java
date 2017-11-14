@@ -23,7 +23,7 @@ public abstract class Game{
     private void gameLoop(){
         Thread t = new Thread(() -> {
             while(true){
-                for(GameObject go: screen.getStage().getCanvas().getGameObjects()){
+                for(GameObject go: screen.getStage().getGameObjects()){
                     go.update();
                     for(GameComponent gc: go.getComponents()){
                         gc.run();
