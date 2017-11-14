@@ -11,7 +11,7 @@ import painengine.component.GameComponent;
 
 public abstract class Game{
 
-    private static Screen screen;
+    private Screen screen;
 
     public Game(){
         setScreen(new Screen());
@@ -46,11 +46,11 @@ public abstract class Game{
         this.screen = screen;
     }
 
-    public static Screen getScreen(){
+    public Screen getScreen(){
         return screen;
     }
 
-    public void init(){}
+    public abstract void init();
     public void stop(){}
     public abstract void start(Screen screen);
 

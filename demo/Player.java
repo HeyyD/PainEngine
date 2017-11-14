@@ -17,7 +17,6 @@ public class Player extends GameObject{
     @Override
     public void start(){
         setImage("demo/assets/Gaston.png");
-        startListening();
         collider = new Collider();
         addComponent(collider);
     }
