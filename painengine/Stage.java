@@ -25,4 +25,5 @@ public class Stage{
 
     public void setCanvas(Canvas canvas) {this.canvas = canvas;}
     public Canvas getCanvas() {return this.canvas;}
+    public List<GameObject> getGameObjects(){return this.gameObjects;}
 }
