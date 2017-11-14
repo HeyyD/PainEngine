@@ -11,6 +11,7 @@ import java.util.LinkedList;
 */
 
 public class Stage{
+    
     private Canvas canvas;
     private List<GameObject> gameObjects = new LinkedList<>();
 
