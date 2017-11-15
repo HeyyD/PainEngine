@@ -17,6 +17,6 @@ public class MyGame extends Game{
 
     @Override
     public void start(Screen screen){
-        screen.getStage().getCanvas().addSprite(sprite);
+        screen.getStage().addSprite(sprite);
     }
 }
