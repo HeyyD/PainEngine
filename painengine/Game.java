@@ -11,7 +11,7 @@ import painengine.component.GameComponent;
 
 public abstract class Game{
 
-    private static Screen screen;
+    private Screen screen;
 
     public Game(){
         setScreen(new Screen());
@@ -23,7 +23,7 @@ public abstract class Game{
     private void gameLoop(){
         Thread t = new Thread(() -> {
             while(true){
-                for(GameObject go: screen.getCanvas().getGameObjects()){
+                for(GameObject go: screen.getStage().getGameObjects()){
                     go.update();
                     for(GameComponent gc: go.getComponents()){
                         gc.run();
@@ -46,11 +46,11 @@ public abstract class Game{
         this.screen = screen;
     }
 
-    public static Screen getScreen(){
+    public Screen getScreen(){
         return screen;
     }
 
-    public void init(){}
+    public abstract void init();
     public void stop(){}
     public abstract void start(Screen screen);
 

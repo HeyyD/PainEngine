@@ -10,7 +10,7 @@ import java.awt.Color;
 
 public class Screen extends JFrame
 {	
-	private Canvas canvas;
+	private Stage stage;
 
 	public Screen(){
 		createDefaultScreen();
@@ -22,14 +22,23 @@ public class Screen extends JFrame
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setFocusable(true);
-		setCanvas(new Canvas(600, 600));
+		Canvas canvas = new Canvas(600,600);
 		canvas.setBackground(Color.BLACK);
-		add(canvas);
+		setStage(new Stage(canvas));
+		add(stage.getCanvas());
 		setFocusable(true);
 		setVisible(true);
 	}
 
-	public Canvas getCanvas(){return this.canvas;}
-	public void setCanvas(Canvas canvas){this.canvas = canvas;}
+	public Stage getStage(){return this.stage;}
+
+	public void setStage(Stage stage){
+		if(this.stage != null)
+			remove(this.stage.getCanvas());
+
+		add(stage.getCanvas());
+		invalidate(); validate();
+		this.stage = stage;
+	}
 }
 

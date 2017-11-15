@@ -22,15 +22,10 @@ public class Canvas extends JPanel
 	private int height;
 
 	private List<Sprite> sprites = new LinkedList<>();
-	private List<GameObject> gameObjects = new LinkedList<>();
 
 	public Canvas(int width, int height){
 		setWidth(width);
 		setHeight(height);
-	}
-
-	public void drawCanvas(){
-		
 	}
 
 	@Override
@@ -42,10 +37,6 @@ public class Canvas extends JPanel
 
 	public void addSprite(Sprite sprite){
 		sprites.add(sprite);
-		if(sprite instanceof GameObject){
-			GameObject go = (GameObject) sprite;
-			gameObjects.add(go);
-		}
 	}
 
 	public void setWidth(int width){
@@ -61,7 +52,5 @@ public class Canvas extends JPanel
 	}
 
 	public int getHeight() {return this.height;}
-
-	public List<GameObject> getGameObjects(){return this.gameObjects;}
 }
 
