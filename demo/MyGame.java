@@ -1,22 +1,22 @@
 package demo;
 import painengine.Game;
 import painengine.Screen;
-import painengine.Stage;
-import painengine.Canvas;
 import painengine.gameobject.Sprite;
-import painengine.gameobject.GameObject;
-
+import painengine.util.SpriteSheet;
 
 public class MyGame extends Game{
 
-    private Stage demoStage;
+    private SpriteSheet spriteSheet;
+    private Sprite sprite;
 
     @Override
     public void init(){
-        demoStage = new DemoStage(new Canvas(600, 600));
+        spriteSheet = new SpriteSheet("demo/assets/spriteSheet.png", 4, 7);
+        sprite = new Sprite(spriteSheet.getSprites()[0][0]);
     }
 
+    @Override
     public void start(Screen screen){
-        screen.setStage(demoStage);
+        screen.getStage().addSprite(sprite);
     }
 }

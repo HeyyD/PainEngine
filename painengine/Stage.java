@@ -1,6 +1,7 @@
 package painengine;
 
 import painengine.gameobject.GameObject;
+import painengine.gameobject.Sprite;
 
 import java.util.List;
 import java.util.LinkedList;
@@ -22,6 +23,10 @@ public class Stage{
     public void addGameObject(GameObject o){
         gameObjects.add(o);
         getCanvas().addSprite(o);
+    }
+
+    public void addSprite(Sprite s){
+        getCanvas().addSprite(s);
     }
 
     public void setCanvas(Canvas canvas) {this.canvas = canvas;}
