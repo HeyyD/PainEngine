@@ -40,6 +40,15 @@ public class Sprite extends Component
 		setWidth(width);
 		setHeight(height);
 		setColor(Color.RED);
+		image = null;
+	}
+
+	public Sprite(BufferedImage image){
+		setX(10);
+		setY(10);
+		setWidth(image.getWidth());
+		setHeight(image.getHeight());
+		this.image = image;
 	}
 
 	public void draw(Graphics g){
@@ -80,5 +89,9 @@ public class Sprite extends Component
 		}catch(IOException e){
 			e.printStackTrace();
 		}
+	}
+
+	public void setImage(BufferedImage image) {
+		this.image = image;
 	}
 }

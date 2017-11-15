@@ -29,11 +29,27 @@ public class SpriteSheet
 		this.rows = rows;
 		this.columns = columns;
 
-		sprites = splitSheet();
+		sprites = splitSheet(spriteSheet);
 	}
 
-	private BufferedImage[][] splitSheet(){
-		return null;
+	private BufferedImage[][] splitSheet(BufferedImage spriteSheet){
+
+		BufferedImage[][] array = new BufferedImage[rows][columns];
+
+		int tileWidth = spriteSheet.getWidth() / columns;
+		int tileHeight = spriteSheet.getHeight() / rows;
+
+		for(int i = 0; i < rows; i++){
+			for(int j = 0; j < columns; j++){
+				array[i][j] = spriteSheet.getSubimage(j * tileWidth, i * tileHeight, tileWidth, tileHeight);
+			}
+		}
+
+		return array;
+	}
+
+	public BufferedImage[][] getSprites(){
+		return sprites;
 	}
 
 }
