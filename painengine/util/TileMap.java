@@ -1,21 +1,19 @@
 package painengine.util;
 
+import painengine.gameobject.Sprite;
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
+	Tilemaps are used to draw large amount of sprites
+	or GameObjects at the same time.
  */
 
 public class TileMap
 {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
-	public TileMap(){
-		super();
+
+	private SpriteSheet spriteSheet;
+
+	public TileMap(SpriteSheet spriteSheet){
+		this.spriteSheet = spriteSheet;
 	}
 
 }
