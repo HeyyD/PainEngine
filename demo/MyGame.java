@@ -13,7 +13,7 @@ public class MyGame extends Game{
 
     @Override
     public void init(){
-        demoStage = new DemoStage(new Canvas(600, 600));
+        demoStage = new DemoStage(new Canvas(600, 600), getScreen());
     }
 
     public void start(Screen screen){
