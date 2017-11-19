@@ -24,6 +24,9 @@ public class Player extends GameObject{
     @Override
     public void update(){
         move();
+
+        if(collider.collides())
+            System.out.println("ouch");
     }
 
     private void move(){
