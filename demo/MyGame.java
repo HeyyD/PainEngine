@@ -1,6 +1,7 @@
 package demo;
 import painengine.Game;
 import painengine.Screen;
+import painengine.Stage;
 import painengine.util.SpriteSheet;
 import painengine.gameobject.Sprite;
 
@@ -22,5 +23,6 @@ public class MyGame extends Game{
         screen.getStage().addGameObject(player);
         player.startListening(screen);
         screen.getStage().addGameObject(enemy);
+        player.enemyColliders.add(enemy.getCollider());
     }
 }

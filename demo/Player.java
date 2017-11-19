@@ -6,7 +6,12 @@ import painengine.component.Collider;
 import java.awt.image.BufferedImage;
 import java.awt.event.KeyEvent;
 
+import java.util.List;
+import java.util.LinkedList;
+
 public class Player extends GameObject{
+
+    public List<Collider> enemyColliders = new LinkedList<>();
 
     private int speed = 5;
     private Collider collider;
@@ -25,8 +30,8 @@ public class Player extends GameObject{
     public void update(){
         move();
 
-        //if(collider.collides())
-        //    System.out.println("ouch");
+        if(collider.collides(enemyColliders))
+            System.out.println("ouch");
     }
 
     private void move(){
