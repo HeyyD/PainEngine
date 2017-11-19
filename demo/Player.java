@@ -25,8 +25,8 @@ public class Player extends GameObject{
     public void update(){
         move();
 
-        if(collider.collides())
-            System.out.println("ouch");
+        //if(collider.collides())
+        //    System.out.println("ouch");
     }
 
     private void move(){
