@@ -4,6 +4,7 @@ import painengine.Game;
 import painengine.Screen;
 import painengine.component.GameComponent;
 
+import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,6 +21,11 @@ public abstract class GameObject extends Controllable
 
 	public GameObject(){
 		super();
+		start();
+	}
+
+	public GameObject(BufferedImage image){
+		super(image);
 		start();
 	}
 
