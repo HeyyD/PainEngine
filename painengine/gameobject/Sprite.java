@@ -51,6 +51,13 @@ public class Sprite extends Component
 		this.image = image;
 	}
 
+	public Sprite(BufferedImage image, int x, int y){
+		setPos(x, y);
+		setWidth(image.getWidth());
+		setHeight(image.getHeight());
+		this.image = image;
+	}
+
 	public void draw(Graphics g){
 		if(image == null)
 			drawSprite(g);
@@ -72,8 +79,10 @@ public class Sprite extends Component
 	public int getX() {return this.x;}
 	public void setY(int y) {this.y = y;}
 	public int getY() {return this.y;}
+	public void setPos(int x, int y){this.x = x; this.y = y;}
 	public void setWidth(int width) {this.width = width;}
 	public int getWidth() {return this.width;}
+	public void setSize(int width, int height) {this.width = width; this.height = height;}
 	public void setHeight(int height) {this.height = height;}
 	public int getHeight() {return this.height;}
 	public void setColor(Color color) {this.color = color;}

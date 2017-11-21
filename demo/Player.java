@@ -18,8 +18,8 @@ public class Player extends GameObject{
     private int speed = 5;
     private Collider collider;
 
-    public Player(BufferedImage image){
-        super(image);
+    public Player(BufferedImage image, int x, int y){
+        super(image, x, y);
     }
 
     @Override

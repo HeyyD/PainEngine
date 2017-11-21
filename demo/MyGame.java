@@ -10,7 +10,7 @@ import painengine.gameobject.Sprite;
 public class MyGame extends Game{
 
     private SpriteSheet playerSheet = new SpriteSheet("demo/assets/spriteSheet.png", 4, 7);
-    private Player player = new Player(playerSheet.getSprites()[0][0]);
+    private Player player = new Player(playerSheet.getSprites()[0][0], 100, 100);
     private Stage demoStage;
     private Enemy enemy = new Enemy(300, 300, 50, 50);
     private SpriteSheet tileSheet = new SpriteSheet("demo/assets/tilesheet.png", 5, 10);

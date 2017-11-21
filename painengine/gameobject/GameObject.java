@@ -29,6 +29,11 @@ public abstract class GameObject extends Controllable
 		start();
 	}
 
+	public GameObject(BufferedImage image, int x, int y){
+		super(image, x, y);
+		start();
+	}
+
 	public GameObject(int x, int y, int width, int height){
 		super(x, y, width, height);
 		start();
