@@ -53,10 +53,10 @@ public class Game{
     }
 
     public void init(){}
-    public void stop(){}
 
     public void start(){
         setScreen(new Screen(name, width, height));
+        init();
         gameLoop();
     }
 
