@@ -53,7 +53,7 @@ public abstract class GameObject extends Controllable
 		screen.addKeyListener(this);
 	}
 
-	public abstract void start();
+	public void start(){}
 	public abstract void update();
 
 	public List<GameComponent> getComponents(){return this.components;}

@@ -1,32 +1,41 @@
-package painengine;
+package painengine.component;
+
 import painengine.util.SpriteSheet;
+import java.awt.image.BufferedImage;
 
+public class Animation extends GameComponent
+{	
+	private BufferedImage[] frames;
+	private int currentFrame = 0;
 
-/**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
- */
-
-public class Animation
-{
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	private SpriteSheet spriteSheet;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
-	public Animation(){
-		super();
+	public Animation(SpriteSheet spriteSheet){
+		frames = sheetToArray(spriteSheet);
 	}
 
+	@Override
+	public void run(){
+		getHost().setImage(frames[currentFrame]);
+		if(currentFrame < frames.length-1)
+			currentFrame++;
+		else
+			currentFrame = 0;
+	}
+
+	private BufferedImage[] sheetToArray(SpriteSheet spriteSheet){
+
+		BufferedImage[] array = new BufferedImage[spriteSheet.getRows() * spriteSheet.getColumns()];
+
+		int index = 0;
+
+		for(int i = 0; i < spriteSheet.getRows(); i++){
+			for(int j = 0; j < spriteSheet.getColumns(); j++){
+				array[index] = spriteSheet.getSprites()[i][j];
+				index++;
+			}
+		}
+
+		System.out.println(array.length);
+		return array;
+	}
 }
 
