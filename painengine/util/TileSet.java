@@ -2,10 +2,20 @@ package painengine.util;
 
 import java.awt.image.BufferedImage;
 
+/**
+    Set of tiles that are created accoding to a
+    SpriteSheet.
+ */
 public class TileSet{
 
     private Tile[] tiles;
 
+    /**
+        Creates array of tiles accoding to the SpriteSheet.
+        All the tiles are not solid by default.
+
+        @param spriteSheet SpriteSheet that the set is build from
+     */
     public TileSet(SpriteSheet spriteSheet){
         tiles = arrayTransform(spriteSheet.getSprites());
     }
@@ -26,6 +36,9 @@ public class TileSet{
         return array;
     }
 
+    /**
+        @return Tiles of this TileSet
+     */
     public Tile[] getTiles() {return this.tiles;}
 
 }

@@ -11,12 +11,13 @@ import java.util.List;
 
 /**
 	GameObjects can store multiple components that can modify how
-	the GameObject behaves.
+	the GameObject behaves. Extends Controllable.
+
+	@see Contollable
  */
 
 public abstract class GameObject extends Controllable
 {
-
 	private List<GameComponent> components = new LinkedList<>();
 
 	public GameObject(){
@@ -49,13 +50,26 @@ public abstract class GameObject extends Controllable
 		components.remove(c);
 	}
 
+	/**
+		Screen starts to listen for KeyInput.
+
+		@param screen Screen that the listener is added
+	 */
 	public void startListening(Screen screen){
 		screen.addKeyListener(this);
 	}
 
+	/** Start is called in every constructor. Can be overrided
+		if user wants to initialize something.
+	 */
 	public void start(){}
+
+	/** Update is called in every game loop round. */
 	public abstract void update();
 
+	/**
+		@return All components in this GameObject
+	 */
 	public List<GameComponent> getComponents(){return this.components;}
 }
 

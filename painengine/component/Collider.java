@@ -5,9 +5,10 @@ import java.util.List;
 
 import painengine.gameobject.GameObject;
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
+	Collider component. Uses Rectangles to detect if the
+	GameObject collides with anything. Extends GameComponent.
+
+	@see GameComponent
  */
 
 public class Collider extends GameComponent
@@ -26,11 +27,19 @@ public class Collider extends GameComponent
 
 	}
 
+	/** Updates the position of the rectangle */
 	@Override
 	public void run(){
 		collider.setBounds(host.getX(), host.getY(), host.getWidth(), host.getHeight());
 	}
 
+	/**
+		Returns true if this collider collides with any rectangle
+		given to it.
+
+		@param colliders Rectangles that this can collide with
+		@return if hits any of the colliders
+	 */
 	public boolean collides(List<Rectangle> colliders){
 		for(Rectangle r: colliders){
 			if(!r.equals(this.collider) && collider.intersects(r))
@@ -39,6 +48,9 @@ public class Collider extends GameComponent
 		return false;
 	}
 
+	/**
+		@return java.awt.Rectangle of this Colllider
+	 */
 	public Rectangle getRectangle(){
 		return this.collider;
 	}

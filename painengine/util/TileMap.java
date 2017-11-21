@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.LinkedList;
 
 /**
-	Tilemaps are used to draw large amount of sprites
-	or GameObjects at the same time.
+	TileMap draws set of tiles according to a 2D
+	integer array.
  */
 
 public class TileMap
@@ -22,6 +22,14 @@ public class TileMap
 	private Tile[] tiles;
 	private int[][] map;
 
+	/**
+		Creates the TileMap according to the TileSets
+		tiles and the map array.
+
+		@param tileSet 	TileSet that is used to build
+						the TileMap
+		@param map 		Array which tells where each tile goes
+	 */
 	public TileMap(TileSet tileSet, int[][] map){
 		this.tileSet = tileSet;
 		this.map = map;
@@ -52,11 +60,21 @@ public class TileMap
 		return array;
 	}
 
-	public void setMap(int[][] map){this.map = map;}
+	/**
+		@return Integer map that is used to draw the tiles
+	 */
 	public int[][] getMap() {return this.map;}
 
+	/**
+		@return List of all the solid tiles in the map
+	 */
 	public List<Rectangle> getSolidTiles(){ return this.solidTiles;}
 
+	/**
+		Draws all the tiles in this TileMap
+
+		@param g java.awt.Graphics
+	 */
 	public void draw(Graphics g){
 		for(Tile t: tiles){
 			t.draw(g);	
