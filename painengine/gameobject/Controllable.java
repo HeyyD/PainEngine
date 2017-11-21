@@ -15,6 +15,10 @@ abstract class Controllable extends Sprite implements KeyListener{
         super(image);
     }
 
+    protected Controllable(BufferedImage image, int x, int y){
+        super(image, x, y);
+    }
+
     protected Controllable(int x, int y, int width, int height){
         super(x,y,width,height);
     }
