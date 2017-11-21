@@ -1,7 +1,9 @@
 package demo;
 
+import painengine.util.SpriteSheet;
 import painengine.gameobject.GameObject;
 import painengine.component.Collider;
+import painengine.component.Animation;
 
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -16,16 +18,16 @@ public class Player extends GameObject{
     public List<Rectangle> walls;
 
     private int speed = 5;
-    private Collider collider;
+    private Collider collider = new Collider();
+    private SpriteSheet spriteSheet = new SpriteSheet("demo/assets/spriteSheet.png", 4, 7);
+    private Animation animation = new Animation(spriteSheet);
 
     public Player(BufferedImage image, int x, int y){
         super(image, x, y);
-    }
-
-    @Override
-    public void start(){
-        collider = new Collider();
+        animation.setFrames(0, 27);
+        animation.setFrameDelay(3);
         addComponent(collider);
+        addComponent(animation);
     }
 
     @Override

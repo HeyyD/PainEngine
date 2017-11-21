@@ -13,9 +13,9 @@ public abstract class GameComponent {
         start();
     }
 
-    public abstract void remove();
+    public void remove(){}
     
-    protected abstract void start();
+    protected void start(){}
 
     public void run(){
 

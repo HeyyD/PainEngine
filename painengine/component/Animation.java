@@ -1,32 +1,78 @@
-package painengine;
+package painengine.component;
+
 import painengine.util.SpriteSheet;
+import java.awt.image.BufferedImage;
 
-
-/**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
- */
-
-public class Animation
-{
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
+public class Animation extends GameComponent
+{	
 	private SpriteSheet spriteSheet;
+	private BufferedImage[] frames;
+	private int currentFrame = 0;
+	private int lastFrame;
+	private int frameDelay = 5;
+	private int frameTimer = 0;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
-	public Animation(){
-		super();
+	public Animation(SpriteSheet spriteSheet){
+		this.spriteSheet = spriteSheet;
+		frames = sheetToArray(spriteSheet);
+		lastFrame = frames.length - 1;
 	}
 
+	public void setFrames(int first, int last){
+		int frameCount = last - first;
+		BufferedImage[] temp = new BufferedImage[frameCount];
+
+		for(int i = first; i < last; i++){
+			temp[i] = this.frames[i];
+		}
+
+		this.lastFrame = temp.length - 1;
+		this.frames = temp;
+
+	}
+
+	@Override
+	public void run(){
+
+		if(frameTimer >= frameDelay){
+			getHost().setImage(frames[currentFrame]);
+
+			if(currentFrame < lastFrame)
+				currentFrame++;
+			else
+				currentFrame = 0;
+
+			frameTimer = 0;
+
+		} else{
+			frameTimer++;
+		}
+
+	}
+
+	private BufferedImage[] sheetToArray(SpriteSheet spriteSheet){
+
+		BufferedImage[] array = new BufferedImage[spriteSheet.getRows() * spriteSheet.getColumns()];
+
+		int index = 0;
+
+		for(int i = 0; i < spriteSheet.getRows(); i++){
+			for(int j = 0; j < spriteSheet.getColumns(); j++){
+				array[index] = spriteSheet.getSprites()[i][j];
+				index++;
+			}
+		}
+
+		return array;
+	}
+
+	public void setFrameDelay(int delay){
+		if(delay >= 0)
+			this.frameDelay = delay;
+	}
+
+	public int getFrameDelay(){
+		return this.frameDelay;
+	}
 }
 
