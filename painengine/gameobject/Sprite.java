@@ -1,6 +1,5 @@
 package painengine.gameobject;
 
-import java.awt.Component;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -13,10 +12,10 @@ import javax.imageio.ImageIO;
 import painengine.Game;
 
 /**
-	Base for GameObject class
+	Base for any drawable class
  */
 
-public class Sprite extends Component
+public class Sprite
 {
 	private int x;
 	private int y;
@@ -25,6 +24,9 @@ public class Sprite extends Component
 	private Color color;
 	private BufferedImage image;
 
+	/**
+		Creates a basic sprite
+	 */
 	public Sprite(){
 		setX(10);
 		setY(10);
@@ -34,14 +36,55 @@ public class Sprite extends Component
 		image = null;
 	}
 
+	/**
+		Creates a Sprite accoding to the parameters.
+
+		@param x X coordinate
+		@param y Y coordinate
+		@param width Width of the sprite
+		@param height Height of the sprite
+	 */
 	public Sprite(int x, int y, int width, int height){
 		setX(x);
 		setY(y);
 		setWidth(width);
 		setHeight(height);
 		setColor(Color.RED);
+		image = null;
 	}
 
+	/**
+		Creates a Sprite from image
+
+		@param image Graphic of the sprite
+	 */
+	public Sprite(BufferedImage image){
+		setX(10);
+		setY(10);
+		setWidth(image.getWidth());
+		setHeight(image.getHeight());
+		this.image = image;
+	}
+
+	/**
+		Creates a Sprite from image and sets its position
+
+		@param image Graphic of the Sprite
+		@param x X coordinate
+		@param y Y coordinate
+	 */
+	public Sprite(BufferedImage image, int x, int y){
+		setPos(x, y);
+		setWidth(image.getWidth());
+		setHeight(image.getHeight());
+		this.image = image;
+	}
+
+	/**
+		Draws this Sprite
+
+		@param g java.awt.Graphics
+	 */
 	public void draw(Graphics g){
 		if(image == null)
 			drawSprite(g);
@@ -56,15 +99,17 @@ public class Sprite extends Component
 
 	private void drawImage(Graphics g){
 		Graphics2D g2D = (Graphics2D) g;
-		g2D.drawImage(image, x, y, width, height, Game.getScreen());
+		g2D.drawImage(image, x, y, width, height, null);
 	}
 
 	public void setX(int x) {this.x = x;}
 	public int getX() {return this.x;}
 	public void setY(int y) {this.y = y;}
 	public int getY() {return this.y;}
+	public void setPos(int x, int y){this.x = x; this.y = y;}
 	public void setWidth(int width) {this.width = width;}
 	public int getWidth() {return this.width;}
+	public void setSize(int width, int height) {this.width = width; this.height = height;}
 	public void setHeight(int height) {this.height = height;}
 	public int getHeight() {return this.height;}
 	public void setColor(Color color) {this.color = color;}
@@ -80,5 +125,9 @@ public class Sprite extends Component
 		}catch(IOException e){
 			e.printStackTrace();
 		}
+	}
+
+	public void setImage(BufferedImage image) {
+		this.image = image;
 	}
 }

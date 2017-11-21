@@ -3,12 +3,22 @@ package painengine.gameobject;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 
+import java.awt.image.BufferedImage;
+
 abstract class Controllable extends Sprite implements KeyListener{
 
     protected Controllable(){
         super();
     }
     
+    protected Controllable(BufferedImage image){
+        super(image);
+    }
+
+    protected Controllable(BufferedImage image, int x, int y){
+        super(image, x, y);
+    }
+
     protected Controllable(int x, int y, int width, int height){
         super(x,y,width,height);
     }

@@ -3,6 +3,8 @@ package demo;
 import painengine.gameobject.GameObject;
 import painengine.component.Collider;
 
+import java.awt.Rectangle;
+
 public class Enemy extends GameObject{
 
     private Collider collider;
@@ -22,4 +24,7 @@ public class Enemy extends GameObject{
 
     }
 
+    public Rectangle getCollider(){
+        return this.collider.getRectangle();
+    }
 }

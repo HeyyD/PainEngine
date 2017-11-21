@@ -2,19 +2,17 @@ package painengine.component;
 
 import java.awt.Rectangle;
 import java.util.List;
-import java.util.LinkedList;
 
 import painengine.gameobject.GameObject;
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
+	Collider component. Uses Rectangles to detect if the
+	GameObject collides with anything. Extends GameComponent.
+
+	@see GameComponent
  */
 
 public class Collider extends GameComponent
 {
-	private static List<Rectangle> colliders = new LinkedList<>();
-
 	private Rectangle collider;
 	private GameObject host;
 
@@ -22,25 +20,39 @@ public class Collider extends GameComponent
 	protected void start(){
 		host = getHost();
 		collider = new Rectangle(host.getX(), host.getY(), host.getWidth(), host.getHeight());
-		colliders.add(collider);
 	}
 
 	@Override
 	public void remove(){
-		colliders.remove(collider);
+
 	}
 
+	/** Updates the position of the rectangle */
 	@Override
 	public void run(){
 		collider.setBounds(host.getX(), host.getY(), host.getWidth(), host.getHeight());
 	}
 
-	public boolean collides(){
+	/**
+		Returns true if this collider collides with any rectangle
+		given to it.
+
+		@param colliders Rectangles that this can collide with
+		@return if hits any of the colliders
+	 */
+	public boolean collides(List<Rectangle> colliders){
 		for(Rectangle r: colliders){
-			if(!r.equals(collider) && collider.intersects(r))
+			if(!r.equals(this.collider) && collider.intersects(r))
 				return true;
 		}
 		return false;
+	}
+
+	/**
+		@return java.awt.Rectangle of this Colllider
+	 */
+	public Rectangle getRectangle(){
+		return this.collider;
 	}
 }
 
