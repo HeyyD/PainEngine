@@ -3,6 +3,10 @@ package painengine.component;
 import painengine.util.SpriteSheet;
 import java.awt.image.BufferedImage;
 
+/**
+	Animation created from SpriteSheet. Can be
+	used to animate GameObjects.
+ */
 public class Animation extends GameComponent
 {	
 	private SpriteSheet spriteSheet;
@@ -12,12 +16,23 @@ public class Animation extends GameComponent
 	private int frameDelay = 5;
 	private int frameTimer = 0;
 
+	/**
+		Create animation frames according to SpriteSheet.
+	 */
 	public Animation(SpriteSheet spriteSheet){
 		this.spriteSheet = spriteSheet;
 		frames = sheetToArray(spriteSheet);
 		lastFrame = frames.length - 1;
 	}
 
+	/**
+		If the SpriteSheet has multiple animations or dead frames,
+		the user can pick the first and last frame of this animation
+		from the sheet.
+
+		@param first First frame of the animation
+		@param last Last frame of the animation
+	 */
 	public void setFrames(int first, int last){
 		int frameCount = last - first;
 		BufferedImage[] temp = new BufferedImage[frameCount];
@@ -31,6 +46,7 @@ public class Animation extends GameComponent
 
 	}
 
+	/** Changes the current frame of the animation */
 	@Override
 	public void run(){
 
@@ -66,11 +82,19 @@ public class Animation extends GameComponent
 		return array;
 	}
 
+	/**
+		Set the time it takes to change a frame.
+
+		@param delay Time it takes to change the frame
+	 */
 	public void setFrameDelay(int delay){
 		if(delay >= 0)
 			this.frameDelay = delay;
 	}
 
+	/**
+		@return Time it takes to change the frame
+	 */
 	public int getFrameDelay(){
 		return this.frameDelay;
 	}
