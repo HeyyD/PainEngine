@@ -52,5 +52,8 @@ public class SpriteSheet
 		return sprites;
 	}
 
+	public int getColumns() {return this.columns;}
+	public int getRows() {return this.rows;}
+
 }
 

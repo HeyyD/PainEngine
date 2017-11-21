@@ -1,16 +1,32 @@
 package painengine.util;
 
-import java.util.List;
-import java.util.LinkedList;
+import java.awt.image.BufferedImage;
 
 public class TileSet{
 
-    private List<Tile> tiles = new LinkedList<>();
+    private Tile[] tiles;
 
     public TileSet(SpriteSheet spriteSheet){
-        
+        tiles = arrayTransform(spriteSheet.getSprites());
     }
 
-    public List<Tile> getTiles() {return this.tiles;}
+    private Tile[] arrayTransform(BufferedImage[][] imageArray){
+
+        Tile[] array = new Tile[imageArray.length * imageArray[0].length];
+
+        int index = 0;
+
+        for(int i = 0; i < imageArray.length; i++){
+            for(int j = 0; j < imageArray[i].length; j++){
+                array[index] = new Tile(imageArray[i][j]);
+                index++;
+            }
+        }
+
+        System.out.println(array.length);
+        return array;
+    }
+
+    public Tile[] getTiles() {return this.tiles;}
 
 }
