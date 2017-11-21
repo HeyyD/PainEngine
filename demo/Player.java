@@ -24,6 +24,8 @@ public class Player extends GameObject{
 
     public Player(BufferedImage image, int x, int y){
         super(image, x, y);
+        animation.setFrames(0, 27);
+        animation.setFrameDelay(3);
         addComponent(collider);
         addComponent(animation);
     }
