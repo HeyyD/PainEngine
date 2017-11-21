@@ -23,7 +23,6 @@ public class TileSet{
             }
         }
 
-        System.out.println(array.length);
         return array;
     }
 

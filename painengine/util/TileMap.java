@@ -13,24 +13,39 @@ public class TileMap
 {
 
 	private TileSet tileSet;
+	private Tile[] tiles;
 	private int[][] map;
 
-	public TileMap(TileSet tileSet){
+	public TileMap(TileSet tileSet, int[][] map){
 		this.tileSet = tileSet;
+		this.map = map;
+		this.tiles = tileArray();
+	}
+
+	private Tile[] tileArray(){
+		Tile[] array = new Tile[map.length * map[0].length];
+
+		int index = 0;
+
+		for(int i = 0; i < map.length; i++){
+			for(int j = 0; j < map[i].length; j++){
+				Tile t = new Tile(tileSet.getTiles()[map[i][j]]);
+				t.setX(t.getWidth() * j);
+				t.setY(t.getHeight() * i);
+				array[index] = t;
+				index++;
+			}
+		}
+
+		return array;
 	}
 
 	public void setMap(int[][] map){this.map = map;}
 	public int[][] getMap() {return this.map;}
 
 	public void draw(Graphics g){
-		for(int i = 0; i < map.length; i++){
-			for(int j = 0; j < map[i].length; j++){
-				Tile t = tileSet.getTiles()[map[i][j]];
-				t.setX(t.getWidth() * j);
-				t.setY(t.getHeight() * i);
-				t.draw(g);
-				//tileSet.getTiles()[map[i][j]].draw(g);
-			}
+		for(Tile t: tiles){
+			t.draw(g);	
 		}
 	}
 

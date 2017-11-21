@@ -12,6 +12,10 @@ public class Tile extends Sprite{
         super(image);
     }
 
+    public Tile(Tile tile){
+        super(tile.getImage());
+    }
+
     public boolean getSolid(){return this.solid;}
     public void setSolid(boolean solid) {this.solid = solid;}
 

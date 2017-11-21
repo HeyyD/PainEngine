@@ -22,7 +22,6 @@ public class MyGame extends Game{
         playerSheet = new SpriteSheet("demo/assets/spriteSheet.png", 4, 7);
         tileSheet = new SpriteSheet("demo/assets/tilesheet.png", 5, 10);
         tileSet = new TileSet(tileSheet);
-        tileMap = new TileMap(tileSet);
 
         map = new int[][]   {{0, 0, 0, 0, 0, 0, 0, 0, 0},
                             {0, 20, 20, 20, 20, 20, 20, 20, 0},
@@ -34,7 +33,7 @@ public class MyGame extends Game{
                             {0, 20, 20, 20, 20, 20, 20, 20, 0},
                             {0, 0, 0, 0, 0, 0, 0, 0, 0}};
 
-        tileMap.setMap(map);
+        tileMap = new TileMap(tileSet, map);
 
         player = new Player(playerSheet.getSprites()[0][0]);
         enemy = new Enemy(300, 300, 50, 50);
