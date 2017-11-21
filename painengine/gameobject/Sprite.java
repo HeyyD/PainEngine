@@ -1,6 +1,5 @@
 package painengine.gameobject;
 
-import java.awt.Component;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -13,10 +12,10 @@ import javax.imageio.ImageIO;
 import painengine.Game;
 
 /**
-	Base for GameObject class
+	Base for any drawable class
  */
 
-public class Sprite extends Component
+public class Sprite
 {
 	private int x;
 	private int y;
@@ -25,6 +24,9 @@ public class Sprite extends Component
 	private Color color;
 	private BufferedImage image;
 
+	/**
+		Creates a basic sprite
+	 */
 	public Sprite(){
 		setX(10);
 		setY(10);
@@ -34,6 +36,14 @@ public class Sprite extends Component
 		image = null;
 	}
 
+	/**
+		Creates a Sprite accoding to the parameters.
+
+		@param x X coordinate
+		@param y Y coordinate
+		@param width Width of the sprite
+		@param height Height of the sprite
+	 */
 	public Sprite(int x, int y, int width, int height){
 		setX(x);
 		setY(y);
@@ -43,6 +53,11 @@ public class Sprite extends Component
 		image = null;
 	}
 
+	/**
+		Creates a Sprite from image
+
+		@param image Graphic of the sprite
+	 */
 	public Sprite(BufferedImage image){
 		setX(10);
 		setY(10);
@@ -51,6 +66,13 @@ public class Sprite extends Component
 		this.image = image;
 	}
 
+	/**
+		Creates a Sprite from image and sets its position
+
+		@param image Graphic of the Sprite
+		@param x X coordinate
+		@param y Y coordinate
+	 */
 	public Sprite(BufferedImage image, int x, int y){
 		setPos(x, y);
 		setWidth(image.getWidth());
@@ -58,6 +80,11 @@ public class Sprite extends Component
 		this.image = image;
 	}
 
+	/**
+		Draws this Sprite
+
+		@param g java.awt.Graphics
+	 */
 	public void draw(Graphics g){
 		if(image == null)
 			drawSprite(g);
