@@ -12,17 +12,13 @@ public class Screen extends JFrame
 {	
 	private Stage stage;
 
-	public Screen(){
-		createDefaultScreen();
-	}
-
-	private void createDefaultScreen(){
-		setTitle("PainEngine Game");
-		setSize(600, 600);
+	public Screen(String name, int width, int height){
+		setTitle(name);
+		setSize(width, height);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setFocusable(true);
-		Canvas canvas = new Canvas(600,600);
+		Canvas canvas = new Canvas(width, height);
 		canvas.setBackground(Color.BLACK);
 		setStage(new Stage(canvas));
 		add(stage.getCanvas());

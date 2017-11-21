@@ -9,15 +9,17 @@ import painengine.component.GameComponent;
 	extends it from desired class.
  */
 
-public abstract class Game{
+public class Game{
 
     private Screen screen;
+    private String name;
+    private int width;
+    private int height;
 
-    public Game(){
-        setScreen(new Screen());
-        init();
-        start(screen);
-        gameLoop();
+    public Game(String name, int width, int height){
+        this.name = name;
+        this.width = width;
+        this.height = height;
     }
 
     private void gameLoop(){
@@ -50,8 +52,12 @@ public abstract class Game{
         return screen;
     }
 
-    public abstract void init();
+    public void init(){}
     public void stop(){}
-    public abstract void start(Screen screen);
+
+    public void start(){
+        setScreen(new Screen(name, width, height));
+        gameLoop();
+    }
 
 }

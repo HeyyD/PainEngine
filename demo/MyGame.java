@@ -17,6 +17,11 @@ public class MyGame extends Game{
     private TileMap tileMap;
     private int[][] map;
 
+    public MyGame(String name, int width, int height){
+        super(name, width, height);
+    }
+
+/*
     @Override
     public void init(){
         playerSheet = new SpriteSheet("demo/assets/spriteSheet.png", 4, 7);
@@ -42,7 +47,6 @@ public class MyGame extends Game{
         enemy = new Enemy(300, 300, 50, 50);
     }
 
-    @Override
     public void start(Screen screen){
         screen.getStage().getCanvas().setTilemap(tileMap);
         screen.getStage().addGameObject(player);
@@ -51,4 +55,6 @@ public class MyGame extends Game{
         player.enemyColliders.add(enemy.getCollider());
         player.setWalls(tileMap.getSolidTiles());
     }
+
+*/
 }
