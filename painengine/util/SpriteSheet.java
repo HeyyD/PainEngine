@@ -13,12 +13,19 @@ import javax.imageio.ImageIO;
 
 public class SpriteSheet
 {
-
 	private BufferedImage spriteSheet;
 	private BufferedImage[][] sprites;
 	private int rows;
 	private int columns;
 
+	/**
+		Constructor that splits the original image into
+		2D array.
+
+		@param path String path to the image to be split
+		@param rown Amount of rows in the SpriteSheet
+		@param columns Amount of columns in the SpriteSheet
+	 */
 	public SpriteSheet(String path, int rows, int columns){
 		try{
 			spriteSheet = ImageIO.read(new File(path));
@@ -48,11 +55,20 @@ public class SpriteSheet
 		return array;
 	}
 
+	/**
+		@return 2D array of the split image
+	 */
 	public BufferedImage[][] getSprites(){
 		return sprites;
 	}
 
+	/**
+		@return Amount of columns in the SpriteSheet
+	 */
 	public int getColumns() {return this.columns;}
+	/**
+		@return Amount of rows in the SpriteSheet
+	 */
 	public int getRows() {return this.rows;}
 
 }
