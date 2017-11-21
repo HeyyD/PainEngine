@@ -3,6 +3,7 @@ package demo;
 import painengine.gameobject.GameObject;
 import painengine.component.Collider;
 
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.awt.event.KeyEvent;
 
@@ -11,7 +12,7 @@ import java.util.LinkedList;
 
 public class Player extends GameObject{
 
-    public List<Collider> enemyColliders = new LinkedList<>();
+    public List<Rectangle> enemyColliders = new LinkedList<>();
 
     private int speed = 5;
     private Collider collider;
