@@ -2,10 +2,12 @@ package painengine;
 
 import painengine.gameobject.Sprite;
 import painengine.gameobject.GameObject;
+import painengine.util.TileMap;
 
 import javax.swing.JPanel;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.awt.Graphics;
 
 /**
@@ -22,6 +24,7 @@ public class Canvas extends JPanel
 	private int height;
 
 	private List<Sprite> sprites = new LinkedList<>();
+	private Optional<TileMap> tileMap = Optional.empty();
 
 	public Canvas(int width, int height){
 		setWidth(width);
@@ -31,6 +34,9 @@ public class Canvas extends JPanel
 	@Override
 	protected void paintComponent(Graphics g){
 		super.paintComponent(g);
+
+		tileMap.ifPresent(t -> t.draw(g));
+
 		for(Sprite s: sprites)
 			s.draw(g);
 	}
@@ -52,5 +58,13 @@ public class Canvas extends JPanel
 	}
 
 	public int getHeight() {return this.height;}
+
+	public Optional<TileMap> getTilemap(){
+		return this.tileMap;
+	}
+
+	public void setTilemap(TileMap tileMap) {
+		this.tileMap = Optional.ofNullable(tileMap);
+	}
 }
 

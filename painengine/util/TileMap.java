@@ -19,12 +19,15 @@ public class TileMap
 		this.tileSet = tileSet;
 	}
 
+	public void setMap(int[][] map){this.map = map;}
+	public int[][] getMap() {return this.map;}
+
 	public void draw(Graphics g){
 		for(int i = 0; i < map.length; i++){
 			for(int j = 0; j < map[i].length; j++){
 				Tile t = tileSet.getTiles()[map[i][j]];
 				t.setX(t.getWidth() * j);
-				t.setX(t.getHeight() * i);
+				t.setY(t.getHeight() * i);
 				t.draw(g);
 				//tileSet.getTiles()[map[i][j]].draw(g);
 			}
