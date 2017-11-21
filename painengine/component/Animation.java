@@ -7,15 +7,17 @@ public class Animation extends GameComponent
 {	
 	private BufferedImage[] frames;
 	private int currentFrame = 0;
+	private int lastFrame;
 
 	public Animation(SpriteSheet spriteSheet){
 		frames = sheetToArray(spriteSheet);
+		lastFrame = frames.length - 1;
 	}
 
 	@Override
 	public void run(){
 		getHost().setImage(frames[currentFrame]);
-		if(currentFrame < frames.length-1)
+		if(currentFrame < lastFrame)
 			currentFrame++;
 		else
 			currentFrame = 0;
