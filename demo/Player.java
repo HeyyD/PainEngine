@@ -13,6 +13,7 @@ import java.util.LinkedList;
 public class Player extends GameObject{
 
     public List<Rectangle> enemyColliders = new LinkedList<>();
+    public List<Rectangle> walls;
 
     private int speed = 5;
     private Collider collider;
@@ -33,6 +34,8 @@ public class Player extends GameObject{
 
         if(collider.collides(enemyColliders))
             System.out.println("ouch");
+        if(collider.collides(walls))
+            System.out.println("wall");
     }
 
     private void move(){
@@ -41,4 +44,7 @@ public class Player extends GameObject{
         else if (isKeyPressed(KeyEvent.VK_W)) setY(getY() - speed);
         else if (isKeyPressed(KeyEvent.VK_S)) setY(getY() + speed);
     }
+
+    public void setWalls(List<Rectangle> walls) {this.walls = walls;}
+
 }

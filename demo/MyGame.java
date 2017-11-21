@@ -22,6 +22,7 @@ public class MyGame extends Game{
         playerSheet = new SpriteSheet("demo/assets/spriteSheet.png", 4, 7);
         tileSheet = new SpriteSheet("demo/assets/tilesheet.png", 5, 10);
         tileSet = new TileSet(tileSheet);
+        tileSet.getTiles()[0].setSolid(true);
 
         map = new int[][]   {{0, 0, 0, 0, 0, 0, 0, 0, 0},
                             {0, 20, 20, 20, 20, 20, 20, 20, 0},
@@ -36,6 +37,8 @@ public class MyGame extends Game{
         tileMap = new TileMap(tileSet, map);
 
         player = new Player(playerSheet.getSprites()[0][0]);
+        player.setX(100);
+        player.setY(100);
         enemy = new Enemy(300, 300, 50, 50);
     }
 
@@ -46,5 +49,6 @@ public class MyGame extends Game{
         player.startListening(screen);
         screen.getStage().addGameObject(enemy);
         player.enemyColliders.add(enemy.getCollider());
+        player.setWalls(tileMap.getSolidTiles());
     }
 }

@@ -3,6 +3,10 @@ package painengine.util;
 import painengine.gameobject.Sprite;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
+
+import java.util.List;
+import java.util.LinkedList;
 
 /**
 	Tilemaps are used to draw large amount of sprites
@@ -11,6 +15,8 @@ import java.awt.Graphics;
 
 public class TileMap
 {
+
+	private List<Rectangle> solidTiles = new LinkedList<>();
 
 	private TileSet tileSet;
 	private Tile[] tiles;
@@ -32,6 +38,12 @@ public class TileMap
 				Tile t = new Tile(tileSet.getTiles()[map[i][j]]);
 				t.setX(t.getWidth() * j);
 				t.setY(t.getHeight() * i);
+
+				if(t.getSolid()){
+					solidTiles.add(new Rectangle(t.getX(), t.getY(),
+									t.getWidth(), t.getHeight()));
+				}
+
 				array[index] = t;
 				index++;
 			}
@@ -42,6 +54,8 @@ public class TileMap
 
 	public void setMap(int[][] map){this.map = map;}
 	public int[][] getMap() {return this.map;}
+
+	public List<Rectangle> getSolidTiles(){ return this.solidTiles;}
 
 	public void draw(Graphics g){
 		for(Tile t: tiles){
