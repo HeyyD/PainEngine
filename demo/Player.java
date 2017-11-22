@@ -21,11 +21,7 @@ public class Player extends GameObject{
     private int speed = 5;
     private Collider collider = new Collider();
     private SpriteSheet spriteSheet = new SpriteSheet("demo/assets/spritesheet.png", 4, 8);
-    private Animation left = new Animation(spriteSheet);
-    private Animation right = new Animation(spriteSheet);
-    private Animation up = new Animation(spriteSheet);
-    private Animation down = new Animation(spriteSheet);
-    private Animator anim = new Animator();
+    private Animator anim = new Animator(spriteSheet);
 
     public Player(BufferedImage image, int x, int y){
         super(image, x, y);
@@ -33,14 +29,10 @@ public class Player extends GameObject{
         addComponent(collider);
         addComponent(anim);
 
-        left.setFrames(0, 8);
-        anim.addAnimation(left);
-        right.setFrames(9, 16);
-        anim.addAnimation(right);
-        up.setFrames(16, 24);
-        anim.addAnimation(up);
-        down.setFrames(24, 32);
-        anim.addAnimation(down);
+        anim.addAnimation(0,8);
+        anim.addAnimation(9, 16);
+        anim.addAnimation(16, 24);
+        anim.addAnimation(24, 32);
         anim.play(0);
     }
 
