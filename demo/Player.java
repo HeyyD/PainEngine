@@ -29,11 +29,12 @@ public class Player extends GameObject{
         addComponent(collider);
         addComponent(anim);
 
-        anim.addAnimation(0,8);
-        anim.addAnimation(9, 16);
-        anim.addAnimation(16, 24);
-        anim.addAnimation(24, 32);
-        anim.play(0);
+        anim.addAnimation("left", 0, 8);
+        anim.addAnimation("right", 9, 16);
+        anim.addAnimation("up", 16, 24);
+        anim.addAnimation("down", 24, 32);
+
+        anim.play("down");
     }
 
     @Override
@@ -48,16 +49,16 @@ public class Player extends GameObject{
 
     private void move(){
         if(isKeyPressed(KeyEvent.VK_A)){
-            setX(getX() - speed); anim.play(0);
+            setX(getX() - speed); anim.play("left");
         }
         else if (isKeyPressed(KeyEvent.VK_D)){
-             setX(getX() + speed); anim.play(1);
+             setX(getX() + speed); anim.play("right");
         }
         else if (isKeyPressed(KeyEvent.VK_W)){
-             setY(getY() - speed); anim.play(2);
+             setY(getY() - speed); anim.play("up");
         }
         else if (isKeyPressed(KeyEvent.VK_S)){
-             setY(getY() + speed); anim.play(3);
+             setY(getY() + speed); anim.play("down");
         }
     }
 
