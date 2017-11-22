@@ -10,6 +10,7 @@ import painengine.component.GameComponent;
 
 public class Game{
 
+    public static boolean RUN = true;
     /** The current game window */
     private Screen screen;
     /** Name of the screen */
@@ -38,8 +39,35 @@ public class Game{
         loop will call every components run method.
     */
     private void gameLoop(){
-        Thread t = new Thread(() -> {
-            while(true){
+
+        double UPDATE_LIMIT = 1.0/60.0;
+
+        boolean render = false;
+        double firstTime = 0;
+        double lastTime = System.nanoTime() / 1000000000.0;
+        double delta = 0;
+        double unprocessedTime = 0;
+
+        double frameTime = 0;
+        int frames = 0;
+        int fps = 0;
+
+        while(RUN){
+            render = false;
+            firstTime = System.nanoTime() / 1000000000.0;
+            delta = firstTime - lastTime;
+            lastTime = firstTime;
+
+            unprocessedTime += delta;
+
+            frameTime += delta;
+
+            while(unprocessedTime >= UPDATE_LIMIT){
+
+                unprocessedTime -= UPDATE_LIMIT;
+                render = true;
+
+                //Update game objecst and components
                 for(GameObject go: screen.getStage().getGameObjects()){
                     go.update();
                     for(GameComponent gc: go.getComponents()){
@@ -47,16 +75,25 @@ public class Game{
                     }
                 }
 
-                screen.repaint();
+                if(frameTime > 1){
+                    fps = frames;
+                    frameTime = 0;
+                    frames = 0;
+                    System.out.println(fps);
+                }
+            }
 
+            if(render){
+                screen.repaint();
+                frames++;
+            } else{
                 try{
-                    Thread.sleep(10);
-                } catch(InterruptedException e){
+                    Thread.sleep(1);
+                }catch (InterruptedException e){
                     e.printStackTrace();
                 }
             }
-        });
-        t.start();
+        }
     }
 
     /**
