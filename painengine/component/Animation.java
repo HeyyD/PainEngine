@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
 public class Animation extends GameComponent
 {	
 	private SpriteSheet spriteSheet;
+	private BufferedImage[] allFrames;
 	private BufferedImage[] frames;
 	private int currentFrame = 0;
 	private int lastFrame;
@@ -22,7 +23,9 @@ public class Animation extends GameComponent
 	public Animation(SpriteSheet spriteSheet){
 		this.spriteSheet = spriteSheet;
 		frames = sheetToArray(spriteSheet);
+		allFrames = frames;
 		lastFrame = frames.length - 1;
+		System.out.println(allFrames.length);
 	}
 
 	/**
@@ -37,8 +40,11 @@ public class Animation extends GameComponent
 		int frameCount = last - first;
 		BufferedImage[] temp = new BufferedImage[frameCount];
 
+		int index = 0;
+
 		for(int i = first; i < last; i++){
-			temp[i] = this.frames[i];
+			temp[index] = this.allFrames[i];
+			index++;
 		}
 
 		this.lastFrame = temp.length - 1;

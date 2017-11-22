@@ -4,6 +4,7 @@ import painengine.util.SpriteSheet;
 import painengine.gameobject.GameObject;
 import painengine.component.Collider;
 import painengine.component.Animation;
+import painengine.component.Animator;
 
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -19,15 +20,27 @@ public class Player extends GameObject{
 
     private int speed = 5;
     private Collider collider = new Collider();
-    private SpriteSheet spriteSheet = new SpriteSheet("demo/assets/spriteSheet.png", 4, 7);
+    private SpriteSheet spriteSheet = new SpriteSheet("demo/assets/spritesheet.png", 4, 8);
     private Animation animation = new Animation(spriteSheet);
+    private Animator anim = new Animator();
 
     public Player(BufferedImage image, int x, int y){
         super(image, x, y);
-        animation.setFrames(0, 27);
-        animation.setFrameDelay(3);
+
         addComponent(collider);
-        addComponent(animation);
+        addComponent(anim);
+
+        animation.setFrames(0, 8);
+        animation.setFrameDelay(3);
+        anim.addAnimation(animation);
+        animation.setFrames(9, 16);
+        anim.addAnimation(animation);
+        animation.setFrames(16, 24);
+        anim.addAnimation(animation);
+        animation.setFrames(24, 32);
+        anim.addAnimation(animation);
+
+        anim.play(3);
     }
 
     @Override
