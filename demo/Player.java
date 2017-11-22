@@ -21,7 +21,10 @@ public class Player extends GameObject{
     private int speed = 5;
     private Collider collider = new Collider();
     private SpriteSheet spriteSheet = new SpriteSheet("demo/assets/spritesheet.png", 4, 8);
-    private Animation animation = new Animation(spriteSheet);
+    private Animation left = new Animation(spriteSheet);
+    private Animation right = new Animation(spriteSheet);
+    private Animation up = new Animation(spriteSheet);
+    private Animation down = new Animation(spriteSheet);
     private Animator anim = new Animator();
 
     public Player(BufferedImage image, int x, int y){
@@ -30,17 +33,15 @@ public class Player extends GameObject{
         addComponent(collider);
         addComponent(anim);
 
-        animation.setFrames(0, 8);
-        animation.setFrameDelay(3);
-        anim.addAnimation(animation);
-        animation.setFrames(9, 16);
-        anim.addAnimation(animation);
-        animation.setFrames(16, 24);
-        anim.addAnimation(animation);
-        animation.setFrames(24, 32);
-        anim.addAnimation(animation);
-
-        anim.play(3);
+        left.setFrames(0, 8);
+        anim.addAnimation(left);
+        right.setFrames(9, 16);
+        anim.addAnimation(right);
+        up.setFrames(16, 24);
+        anim.addAnimation(up);
+        down.setFrames(24, 32);
+        anim.addAnimation(down);
+        anim.play(0);
     }
 
     @Override
@@ -54,10 +55,18 @@ public class Player extends GameObject{
     }
 
     private void move(){
-        if(isKeyPressed(KeyEvent.VK_A)) setX(getX() - speed);
-        else if (isKeyPressed(KeyEvent.VK_D)) setX(getX() + speed);
-        else if (isKeyPressed(KeyEvent.VK_W)) setY(getY() - speed);
-        else if (isKeyPressed(KeyEvent.VK_S)) setY(getY() + speed);
+        if(isKeyPressed(KeyEvent.VK_A)){
+            setX(getX() - speed); anim.play(0);
+        }
+        else if (isKeyPressed(KeyEvent.VK_D)){
+             setX(getX() + speed); anim.play(1);
+        }
+        else if (isKeyPressed(KeyEvent.VK_W)){
+             setY(getY() - speed); anim.play(2);
+        }
+        else if (isKeyPressed(KeyEvent.VK_S)){
+             setY(getY() + speed); anim.play(3);
+        }
     }
 
     public void setWalls(List<Rectangle> walls) {this.walls = walls;}

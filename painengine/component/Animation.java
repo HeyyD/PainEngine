@@ -25,7 +25,6 @@ public class Animation extends GameComponent
 		frames = sheetToArray(spriteSheet);
 		allFrames = frames;
 		lastFrame = frames.length - 1;
-		System.out.println(allFrames.length);
 	}
 
 	/**
