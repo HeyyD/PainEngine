@@ -111,13 +111,25 @@ public class Animation extends GameComponent
 		return this.frameDelay;
 	}
 
+	/** 
+		Sets the animation to its original state. Current frame is
+		set to zero, frame timer is set to zero and isFinished is
+		set to false.
+	 */
 	public void reset(){
 		currentFrame = 0;
 		frameTimer = 0;
 		isFinished = false;
 	}
 
+	/**
+		@param loop Loop booleans new value
+	 */
 	public void setLooping(boolean loop) {this.loop = loop;}
+
+	/**
+		@return isFinished boolens value
+	 */
 	public boolean isFinished() { return this.isFinished;}
 }
 
