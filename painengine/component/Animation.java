@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
 public class Animation extends GameComponent
 {	
 	private boolean loop = true;
+	private boolean isFinished = false;
 
 	private SpriteSheet spriteSheet;
 	private BufferedImage[] allFrames;
@@ -57,18 +58,22 @@ public class Animation extends GameComponent
 	@Override
 	public void run(){
 
-		if(frameTimer >= frameDelay){
-			getHost().setImage(frames[currentFrame]);
+		if(!isFinished){
+			if(frameTimer >= frameDelay){
+				getHost().setImage(frames[currentFrame]);
 
-			if(currentFrame < lastFrame)
-				currentFrame++;
-			else if(loop)
-				currentFrame = 0;
+				if(currentFrame < lastFrame)
+					currentFrame++;
+				else if(loop)
+					currentFrame = 0;
+				else
+					isFinished = true;
 
-			frameTimer = 0;
+				frameTimer = 0;
 
-		} else{
-			frameTimer++;
+			} else{
+				frameTimer++;
+			}
 		}
 
 	}
@@ -107,5 +112,6 @@ public class Animation extends GameComponent
 	}
 
 	public void setLooping(boolean loop) {this.loop = loop;}
+	public boolean isFinished() { return this.isFinished;}
 }
 

@@ -44,6 +44,10 @@ public class Animator extends GameComponent
 
 	}
 
+	public Animation get(String name){
+		return animations.get(name);
+	}
+
 	public void play(String name){
 		currentAnimation = animations.get(name);
 	}
