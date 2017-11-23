@@ -26,6 +26,10 @@ public class Animator extends GameComponent
 		}
 	}
 
+	public void removeAnimation(String name){
+		animations.remove(name);
+	}
+
 	public void addAnimation(String name, Animation animation){
 		animation.setHost(getHost());
 		animations.put(name, animation);

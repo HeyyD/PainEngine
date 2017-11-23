@@ -33,7 +33,7 @@ public class Player extends GameObject{
         anim.addAnimation("right", 9, 16);
         anim.addAnimation("up", 16, 24);
         anim.addAnimation("down", 24, 32);
-
+        
         anim.play("down");
     }
 
