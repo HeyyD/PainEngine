@@ -9,7 +9,11 @@ import java.awt.image.BufferedImage;
  */
 public class Animation extends GameComponent
 {	
+	private boolean loop = true;
+	private boolean isFinished = false;
+
 	private SpriteSheet spriteSheet;
+	private BufferedImage[] allFrames;
 	private BufferedImage[] frames;
 	private int currentFrame = 0;
 	private int lastFrame;
@@ -22,6 +26,7 @@ public class Animation extends GameComponent
 	public Animation(SpriteSheet spriteSheet){
 		this.spriteSheet = spriteSheet;
 		frames = sheetToArray(spriteSheet);
+		allFrames = frames;
 		lastFrame = frames.length - 1;
 	}
 
@@ -37,8 +42,11 @@ public class Animation extends GameComponent
 		int frameCount = last - first;
 		BufferedImage[] temp = new BufferedImage[frameCount];
 
+		int index = 0;
+
 		for(int i = first; i < last; i++){
-			temp[i] = this.frames[i];
+			temp[index] = this.allFrames[i];
+			index++;
 		}
 
 		this.lastFrame = temp.length - 1;
@@ -50,18 +58,22 @@ public class Animation extends GameComponent
 	@Override
 	public void run(){
 
-		if(frameTimer >= frameDelay){
-			getHost().setImage(frames[currentFrame]);
+		if(!isFinished){
+			if(frameTimer >= frameDelay){
+				getHost().setImage(frames[currentFrame]);
 
-			if(currentFrame < lastFrame)
-				currentFrame++;
-			else
-				currentFrame = 0;
+				if(currentFrame < lastFrame)
+					currentFrame++;
+				else if(loop)
+					currentFrame = 0;
+				else
+					isFinished = true;
 
-			frameTimer = 0;
+				frameTimer = 0;
 
-		} else{
-			frameTimer++;
+			} else{
+				frameTimer++;
+			}
 		}
 
 	}
@@ -98,5 +110,26 @@ public class Animation extends GameComponent
 	public int getFrameDelay(){
 		return this.frameDelay;
 	}
+
+	/** 
+		Sets the animation to its original state. Current frame is
+		set to zero, frame timer is set to zero and isFinished is
+		set to false.
+	 */
+	public void reset(){
+		currentFrame = 0;
+		frameTimer = 0;
+		isFinished = false;
+	}
+
+	/**
+		@param loop Loop booleans new value
+	 */
+	public void setLooping(boolean loop) {this.loop = loop;}
+
+	/**
+		@return isFinished boolens value
+	 */
+	public boolean isFinished() { return this.isFinished;}
 }
 

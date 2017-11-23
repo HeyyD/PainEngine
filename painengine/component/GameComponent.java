@@ -33,5 +33,10 @@ public abstract class GameComponent {
         @return Host GameObject of this component
      */
     public GameObject getHost(){return this.host;}
+
+    /**
+        @param host new host of this component
+     */
+    public void setHost(GameObject host){this.host = host;}
 }
 
