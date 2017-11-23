@@ -111,6 +111,12 @@ public class Animation extends GameComponent
 		return this.frameDelay;
 	}
 
+	public void reset(){
+		currentFrame = 0;
+		frameTimer = 0;
+		isFinished = false;
+	}
+
 	public void setLooping(boolean loop) {this.loop = loop;}
 	public boolean isFinished() { return this.isFinished;}
 }
