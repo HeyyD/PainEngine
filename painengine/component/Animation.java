@@ -9,6 +9,8 @@ import java.awt.image.BufferedImage;
  */
 public class Animation extends GameComponent
 {	
+	private boolean loop = true;
+
 	private SpriteSheet spriteSheet;
 	private BufferedImage[] allFrames;
 	private BufferedImage[] frames;
@@ -60,7 +62,7 @@ public class Animation extends GameComponent
 
 			if(currentFrame < lastFrame)
 				currentFrame++;
-			else
+			else if(loop)
 				currentFrame = 0;
 
 			frameTimer = 0;
@@ -103,5 +105,7 @@ public class Animation extends GameComponent
 	public int getFrameDelay(){
 		return this.frameDelay;
 	}
+
+	public void setLooping(boolean loop) {this.loop = loop;}
 }
 
