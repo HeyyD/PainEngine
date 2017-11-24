@@ -1,22 +1,11 @@
 package painengine.util;
 
-
-/**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
- */
-
 public class Physics
 {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
-	public Physics(){
-		super();
-	}
+	private float gravity = 9.21f;
+
+	public void setGravity(float gravity) {this.gravity = gravity;}
+	public float getGravity() {return this.gravity;}
 
 }
 

@@ -19,7 +19,7 @@ public class Player extends GameObject{
     public List<Rectangle> enemyColliders = new LinkedList<>();
     public List<Rectangle> walls;
 
-    private int speed = 5;
+    private int speed = 1;
     private Collider collider = new Collider();
     private SpriteSheet spriteSheet = new SpriteSheet("demo/assets/spritesheet.png", 4, 8);
     private Animator anim = new Animator(spriteSheet);
@@ -32,9 +32,9 @@ public class Player extends GameObject{
         addComponent(anim);
         addComponent(rb);
 
-        anim.addAnimation("left", 0, 8);
+        anim.addAnimation("down", 24, 32);
         
-        anim.play("left");
+        anim.play("down");
     }
 
     @Override
@@ -43,7 +43,11 @@ public class Player extends GameObject{
     }
 
     private void move(){
-
+        if(isKeyPressed(KeyEvent.VK_D)){
+            rb.setVelocityX(rb.getVelocityX() + speed);
+        } else if(isKeyPressed(KeyEvent.VK_A)){
+            rb.setVelocityX(rb.getVelocityX() - speed);
+        }
     }
 
     public void setWalls(List<Rectangle> walls) {this.walls = walls;}
