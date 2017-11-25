@@ -12,7 +12,7 @@ public class Rigidbody extends GameComponent
 	private float velocityX = 0;
 	private float velocityY = 0;
 	private float friction = 0.5f;
-	private float gravity = 0.1f;
+	private float gravity = 0.5f;
 
 	public Rigidbody(){
 		super();
@@ -31,11 +31,17 @@ public class Rigidbody extends GameComponent
 			velocityX += friction;
 		}
 
-		if(useGravity)
+		if(useGravity){
 			velocityY = getVelocityY() + gravity;
+		} else{
+			if(velocityY > 0){
+				velocityY -= friction;
+			} else if (velocityY < 0){
+				velocityY += friction;
+			}
+		}
 
-		getHost().setX(getHost().getFloatX() + velocityX);
-		getHost().setY(getHost().getFloatY() + velocityY);
+		getHost().setPos(getHost().getFloatX() + velocityX, getHost().getFloatY() + velocityY);
 	}
 
 	public void setVelocityX(float velocity) {this.velocityX = velocity;}

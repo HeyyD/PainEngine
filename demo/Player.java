@@ -19,7 +19,10 @@ public class Player extends GameObject{
     public List<Rectangle> enemyColliders = new LinkedList<>();
     public List<Rectangle> walls;
 
+    private boolean grounded = false;
+
     private int speed = 1;
+    private float jumpForce = -10;
     private Collider collider = new Collider();
     private SpriteSheet spriteSheet = new SpriteSheet("demo/assets/spritesheet.png", 4, 8);
     private Animator anim = new Animator(spriteSheet);
@@ -32,8 +35,8 @@ public class Player extends GameObject{
         addComponent(anim);
         addComponent(rb);
 
-        rb.useGravity(false);
-
+        anim.addAnimation("left", 1, 8);
+        anim.addAnimation("right", 9, 16);
         anim.addAnimation("down", 24, 32);
         
         anim.play("down");
@@ -42,13 +45,30 @@ public class Player extends GameObject{
     @Override
     public void update(){
         move();
+
+        rb.useGravity(!grounded);
+
+        if(collider.collides(walls)){
+            grounded = true;
+            float posY = (float) collider.collidesWith(walls).getY() - getHeight();
+            rb.setVelocityY(0);
+            rb.useGravity(false);
+            setY(posY);
+        }
     }
 
     private void move(){
         if(isKeyPressed(KeyEvent.VK_D)){
-            rb.setVelocityX(rb.getVelocityX() + speed);
+            rb.setVelocityX(rb.getVelocityX() + speed); anim.play("right");
         } else if(isKeyPressed(KeyEvent.VK_A)){
-            rb.setVelocityX(rb.getVelocityX() - speed);
+            rb.setVelocityX(rb.getVelocityX() - speed); anim.play("left");
+        }
+
+        if(isKeyPressed(KeyEvent.VK_SPACE)){
+            if(grounded){
+                rb.setVelocityY(jumpForce);
+                grounded = false;
+            }
         }
     }
 

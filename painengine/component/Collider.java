@@ -48,6 +48,14 @@ public class Collider extends GameComponent
 		return false;
 	}
 
+	public Rectangle collidesWith(List<Rectangle> colliders){
+		for(Rectangle r: colliders){
+			if(!r.equals(this.collider) && collider.intersects(r))
+				return r;
+		}
+		return null;
+	}
+
 	/**
 		@return java.awt.Rectangle of this Colllider
 	 */
