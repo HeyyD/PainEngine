@@ -25,8 +25,8 @@ public class Rigidbody extends GameComponent
 
 		velocityY = getVelocityY() + gravity;
 
-		getHost().setX(getHost().getX() + velocityX);
-		getHost().setY(getHost().getY() + velocityY);
+		getHost().setX(getHost().getFloatX() + velocityX);
+		getHost().setY(getHost().getFloatY() + velocityY);
 	}
 
 	public void setVelocityX(float velocity) {this.velocityX = velocity;}

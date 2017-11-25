@@ -17,6 +17,8 @@ import painengine.Game;
 
 public class Sprite
 {
+	private float floatX;
+	private float floatY;
 	private int x;
 	private int y;
 	private int width;
@@ -103,11 +105,19 @@ public class Sprite
 	}
 
 	public void setX(int x) {this.x = x;}
-	public void setX(float x) {this.x = Math.round(x);}
+	public void setX(float x) {
+		this.floatX = x;
+		this.x = Math.round(floatX);
+	}
 	public int getX() {return this.x;}
+	public float getFloatX() {return this.floatX;}
 	public void setY(int y) {this.y = y;}
-	public void setY(float y) {this.y = Math.round(y);}
+	public void setY(float y) {
+		this.floatY = y;
+		this.y = Math.round(floatY);
+	}
 	public int getY() {return this.y;}
+	public float getFloatY() {return this.floatY;}
 
 	public void setPos(int x, int y){
 		this.x = x;
@@ -115,7 +125,8 @@ public class Sprite
 	}
 
 	public void setPos(float x, float y){
-		this.x = Math.round(x); this.y = Math.round(y);
+		this.floatX = x; this.floatY = y;
+		this.x = Math.round(floatX); this.y = Math.round(floatY);
 	}
 
 	public void setWidth(int width) {this.width = width;}
