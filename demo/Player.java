@@ -32,6 +32,8 @@ public class Player extends GameObject{
         addComponent(anim);
         addComponent(rb);
 
+        rb.useGravity(false);
+
         anim.addAnimation("down", 24, 32);
         
         anim.play("down");
