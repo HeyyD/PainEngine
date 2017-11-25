@@ -6,9 +6,10 @@ import painengine.gameobject.GameObject;
 
 public class Rigidbody extends GameComponent
 {
-	private GameObject host;
 	private boolean useGravity = true;
 
+	private float x;
+	private float y;
 	private float velocityX = 0;
 	private float velocityY = 0;
 	private float friction = 0.5f;
@@ -20,6 +21,12 @@ public class Rigidbody extends GameComponent
 
 	public Rigidbody(float mass){
 		super();
+	}
+
+	@Override
+	public void start(){
+		this.x = getHost().getX();
+		this.y = getHost().getY();
 	}
 
 	@Override
@@ -41,7 +48,11 @@ public class Rigidbody extends GameComponent
 			}
 		}
 
-		getHost().setPos(getHost().getFloatX() + velocityX, getHost().getFloatY() + velocityY);
+		x += velocityX;
+		y += velocityY;
+
+		//getHost().setPos(getHost().getFloatX() + velocityX, getHost().getFloatY() + velocityY);
+		getHost().setPos(x, y);
 	}
 
 	public void setVelocityX(float velocity) {this.velocityX = velocity;}
@@ -54,13 +65,17 @@ public class Rigidbody extends GameComponent
 
 	public float getVelocityX() {return this.velocityX;}
 	public float getVelocityY() {return this.velocityY;}
-
 	public float getFriction() {return this.friction;}
 
 	public void setFriction(float friction) {
 		if(friction >= 0)
 			this.friction = friction;
 	}
+
+	public float getX() {return this.x;}
+	public float getY() {return this.y;}
+	public void setX(float x) {this.x = x;}
+	public void setY(float y) {this.y = y;}
 
 	public boolean useGravity() {return this.useGravity;}
 	public void useGravity(boolean useGravity) {this.useGravity = useGravity;}

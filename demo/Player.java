@@ -53,7 +53,7 @@ public class Player extends GameObject{
             float posY = (float) collider.collidesWith(walls).getY() - getHeight();
             rb.setVelocityY(0);
             rb.useGravity(false);
-            setY(posY);
+            rb.setY(posY);
         }
     }
 
