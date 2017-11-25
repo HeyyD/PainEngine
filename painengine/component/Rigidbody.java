@@ -6,38 +6,39 @@ import painengine.gameobject.GameObject;
 
 public class Rigidbody extends GameComponent
 {
-
 	private GameObject host;
-	private Physics physics = new Physics();
 
-	private int velocityX = 0;
-	private int velocityY = 0;
-	private int mass = 5;
+	private float velocityX = 0;
+	private float velocityY = 0;
+	private float gravity = 0.1f;
 
 	public Rigidbody(){
 		super();
 	}
 
-	public Rigidbody(int mass){
+	public Rigidbody(float mass){
 		super();
 	}
 
 	@Override
 	public void run(){
+
+		velocityY = getVelocityY() + gravity;
+
 		getHost().setX(getHost().getX() + velocityX);
 		getHost().setY(getHost().getY() + velocityY);
 	}
 
-	public void setVelocityX(int velocity) {this.velocityX = velocity;}
-	public void setVelocityY(int velocity) {this.velocityY = velocity;}
+	public void setVelocityX(float velocity) {this.velocityX = velocity;}
+	public void setVelocityY(float velocity) {this.velocityY = velocity;}
 
-	public void setVelocity(int x, int y) {
+	public void setVelocity(float x, float y) {
 		this.velocityX = x;
 		this.velocityY = y;
 	}
 
-	public int getVelocityX() {return this.velocityX;}
-	public int getVelocityY() {return this.velocityY;}
+	public float getVelocityX() {return this.velocityX;}
+	public float getVelocityY() {return this.velocityY;}
 
 }
 

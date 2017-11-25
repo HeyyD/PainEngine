@@ -103,10 +103,21 @@ public class Sprite
 	}
 
 	public void setX(int x) {this.x = x;}
+	public void setX(float x) {this.x = Math.round(x);}
 	public int getX() {return this.x;}
 	public void setY(int y) {this.y = y;}
+	public void setY(float y) {this.y = Math.round(y);}
 	public int getY() {return this.y;}
-	public void setPos(int x, int y){this.x = x; this.y = y;}
+
+	public void setPos(int x, int y){
+		this.x = x;
+		this.y = y;
+	}
+
+	public void setPos(float x, float y){
+		this.x = Math.round(x); this.y = Math.round(y);
+	}
+
 	public void setWidth(int width) {this.width = width;}
 	public int getWidth() {return this.width;}
 	public void setSize(int width, int height) {this.width = width; this.height = height;}
