@@ -51,7 +51,6 @@ public class Rigidbody extends GameComponent
 		x += velocityX;
 		y += velocityY;
 
-		//getHost().setPos(getHost().getFloatX() + velocityX, getHost().getFloatY() + velocityY);
 		getHost().setPos(x, y);
 	}
 

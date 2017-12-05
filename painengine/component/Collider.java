@@ -1,7 +1,9 @@
 package painengine.component;
 
 import java.awt.Rectangle;
+
 import java.util.List;
+import java.util.Optional;
 
 import painengine.gameobject.GameObject;
 /**
@@ -13,6 +15,7 @@ import painengine.gameobject.GameObject;
 
 public class Collider extends GameComponent
 {
+	private Optional<CollisionDetection> detection = Optional.empty();
 	private Rectangle collider;
 	private GameObject host;
 
@@ -22,15 +25,17 @@ public class Collider extends GameComponent
 		collider = new Rectangle(host.getX(), host.getY(), host.getWidth(), host.getHeight());
 	}
 
-	@Override
-	public void remove(){
 
-	}
 
 	/** Updates the position of the rectangle */
 	@Override
 	public void run(){
 		collider.setBounds(host.getX(), host.getY(), host.getWidth(), host.getHeight());
+		detection.ifPresent(d -> d.updatePosition());
+	}
+
+	public void checkCollision(){
+		detection = Optional.of(new CollisionDetection(getHost()));
 	}
 
 	/**
