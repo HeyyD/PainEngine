@@ -60,8 +60,6 @@ class CollisionDetection{
         leftMid.setLocation(host.getX(), host.getY() + host.getHeight() /2);
         rightMid.setLocation(host.getX() + host.getWidth(), host.getY() + host.getHeight() / 2);
         bottomMid.setLocation(host.getX() + host.getWidth() / 2, host.getY() + host.getHeight());
-
-        System.out.println(topLeft.toString());
     }
 
 }

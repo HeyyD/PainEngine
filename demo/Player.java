@@ -31,7 +31,6 @@ public class Player extends GameObject{
     public Player(BufferedImage image, int x, int y){
         super(image, x, y);
         addComponent(collider);
-        collider.checkCollision();
         addComponent(anim);
         addComponent(rb);
 

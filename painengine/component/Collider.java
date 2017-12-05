@@ -15,7 +15,7 @@ import painengine.gameobject.GameObject;
 
 public class Collider extends GameComponent
 {
-	private Optional<CollisionDetection> detection = Optional.empty();
+	private CollisionDetection detection;
 	private Rectangle collider;
 	private GameObject host;
 
@@ -23,6 +23,7 @@ public class Collider extends GameComponent
 	protected void start(){
 		host = getHost();
 		collider = new Rectangle(host.getX(), host.getY(), host.getWidth(), host.getHeight());
+		detection = new CollisionDetection(host);
 	}
 
 
@@ -31,11 +32,7 @@ public class Collider extends GameComponent
 	@Override
 	public void run(){
 		collider.setBounds(host.getX(), host.getY(), host.getWidth(), host.getHeight());
-		detection.ifPresent(d -> d.updatePosition());
-	}
-
-	public void checkCollision(){
-		detection = Optional.of(new CollisionDetection(getHost()));
+		detection.updatePosition();
 	}
 
 	/**
