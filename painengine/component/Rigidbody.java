@@ -19,10 +19,6 @@ public class Rigidbody extends GameComponent
 		super();
 	}
 
-	public Rigidbody(float mass){
-		super();
-	}
-
 	@Override
 	public void start(){
 		this.x = getHost().getX();

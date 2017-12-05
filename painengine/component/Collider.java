@@ -1,6 +1,7 @@
 package painengine.component;
 
 import java.awt.Rectangle;
+import java.awt.Point;
 
 import java.util.List;
 import java.util.Optional;
@@ -63,6 +64,50 @@ public class Collider extends GameComponent
 	 */
 	public Rectangle getRectangle(){
 		return this.collider;
+	}
+
+	public boolean topCollides(List<Rectangle> colliders){
+		for(Rectangle r: colliders){
+			for(Point p: detection.getTopPoints()){
+				if(r.contains(p))
+					return true;
+			}
+		}
+
+		return false;
+	}
+
+	public boolean bottomCollides(List<Rectangle> colliders){
+		for(Rectangle r: colliders){
+			for(Point p: detection.getBottomPoints()){
+				if(r.contains(p))
+					return true;
+			}
+		}
+
+		return false;
+	}
+
+	public boolean leftCollides(List<Rectangle> colliders){
+		for(Rectangle r: colliders){
+			for(Point p: detection.getLeftPoints()){
+				if(r.contains(p))
+					return true;
+			}
+		}
+
+		return false;
+	}
+
+	public boolean rightCollides(List<Rectangle> colliders){
+		for(Rectangle r: colliders){
+			for(Point p: detection.getRightPoints()){
+				if(r.contains(p))
+					return true;
+			}
+		}
+
+		return false;
 	}
 }
 

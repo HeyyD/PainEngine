@@ -43,20 +43,21 @@ public class Player extends GameObject{
 
     @Override
     public void update(){
-        move();
-
         rb.useGravity(!grounded);
-
-        if(collider.collides(walls)){
-            grounded = true;
-            float posY = (float) collider.collidesWith(walls).getY() - getHeight();
-            rb.setVelocityY(0);
-            rb.useGravity(false);
-            rb.setY(posY);
-        }
+        move();
     }
 
     private void move(){
+
+        if(collider.bottomCollides(walls)){
+            grounded = true;
+            rb.setVelocityY(0);
+        }
+
+        if(collider.topCollides(walls)){
+            rb.setVelocityY(0);
+        }
+
         if(isKeyPressed(KeyEvent.VK_D)){
             rb.setVelocityX(rb.getVelocityX() + speed); anim.play("right");
         } else if(isKeyPressed(KeyEvent.VK_A)){

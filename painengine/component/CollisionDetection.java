@@ -62,4 +62,9 @@ class CollisionDetection{
         bottomMid.setLocation(host.getX() + host.getWidth() / 2, host.getY() + host.getHeight());
     }
 
+    public List<Point> getTopPoints(){return this.topPoints;}
+    public List<Point> getRightPoints(){return this.rightPoints;}
+    public List<Point> getBottomPoints(){return this.bottomPoints;}
+    public List<Point> getLeftPoints(){return this.leftPoints;}
+
 }
