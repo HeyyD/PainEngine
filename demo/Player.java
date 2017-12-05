@@ -5,6 +5,7 @@ import painengine.gameobject.GameObject;
 import painengine.component.Collider;
 import painengine.component.Animation;
 import painengine.component.Animator;
+import painengine.component.Rigidbody;
 
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -18,20 +19,23 @@ public class Player extends GameObject{
     public List<Rectangle> enemyColliders = new LinkedList<>();
     public List<Rectangle> walls;
 
-    private int speed = 5;
+    private boolean grounded = false;
+
+    private int speed = 1;
+    private float jumpForce = -10;
     private Collider collider = new Collider();
     private SpriteSheet spriteSheet = new SpriteSheet("demo/assets/spritesheet.png", 4, 8);
     private Animator anim = new Animator(spriteSheet);
+    private Rigidbody rb = new Rigidbody();
 
     public Player(BufferedImage image, int x, int y){
         super(image, x, y);
-
         addComponent(collider);
         addComponent(anim);
+        addComponent(rb);
 
-        anim.addAnimation("left", 0, 8);
+        anim.addAnimation("left", 1, 8);
         anim.addAnimation("right", 9, 16);
-        anim.addAnimation("up", 16, 24);
         anim.addAnimation("down", 24, 32);
         
         anim.play("down");
@@ -39,26 +43,32 @@ public class Player extends GameObject{
 
     @Override
     public void update(){
+        rb.useGravity(!grounded);
         move();
-
-        if(collider.collides(enemyColliders))
-            System.out.println("ouch");
-        if(collider.collides(walls))
-            System.out.println("wall");
     }
 
     private void move(){
-        if(isKeyPressed(KeyEvent.VK_A)){
-            setX(getX() - speed); anim.play("left");
+
+        if(collider.bottomCollides(walls)){
+            grounded = true;
+            rb.setVelocityY(0);
         }
-        else if (isKeyPressed(KeyEvent.VK_D)){
-             setX(getX() + speed); anim.play("right");
+
+        if(collider.topCollides(walls)){
+            rb.setVelocityY(0);
         }
-        else if (isKeyPressed(KeyEvent.VK_W)){
-             setY(getY() - speed); anim.play("up");
+
+        if(isKeyPressed(KeyEvent.VK_D)){
+            rb.setVelocityX(rb.getVelocityX() + speed); anim.play("right");
+        } else if(isKeyPressed(KeyEvent.VK_A)){
+            rb.setVelocityX(rb.getVelocityX() - speed); anim.play("left");
         }
-        else if (isKeyPressed(KeyEvent.VK_S)){
-             setY(getY() + speed); anim.play("down");
+
+        if(isKeyPressed(KeyEvent.VK_SPACE)){
+            if(grounded){
+                rb.setVelocityY(jumpForce);
+                grounded = false;
+            }
         }
     }
 
