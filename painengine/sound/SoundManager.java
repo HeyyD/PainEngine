@@ -9,6 +9,7 @@ public class SoundManager
 {
 
 	private Clip music = null;
+	private boolean loop = true;
 
 	public void playSound(String path){
 		try {
@@ -32,8 +33,15 @@ public class SoundManager
 	}
 
 	public void startMusic(){
-		if(music != null)
-			music.start();
+		if(music != null){
+			if(loop){
+				music.loop(Clip.LOOP_CONTINUOUSLY);
+			} else{
+				music.start();
+			}
+		}
 	}
+
+	public void loop(boolean value){this.loop = value;}
 }
 
