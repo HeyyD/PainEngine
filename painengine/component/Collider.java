@@ -1,7 +1,10 @@
 package painengine.component;
 
 import java.awt.Rectangle;
+import java.awt.Point;
+
 import java.util.List;
+import java.util.Optional;
 
 import painengine.gameobject.GameObject;
 /**
@@ -13,6 +16,7 @@ import painengine.gameobject.GameObject;
 
 public class Collider extends GameComponent
 {
+	private CollisionDetection detection;
 	private Rectangle collider;
 	private GameObject host;
 
@@ -20,17 +24,16 @@ public class Collider extends GameComponent
 	protected void start(){
 		host = getHost();
 		collider = new Rectangle(host.getX(), host.getY(), host.getWidth(), host.getHeight());
+		detection = new CollisionDetection(host);
 	}
 
-	@Override
-	public void remove(){
 
-	}
 
 	/** Updates the position of the rectangle */
 	@Override
 	public void run(){
 		collider.setBounds(host.getX(), host.getY(), host.getWidth(), host.getHeight());
+		detection.updatePosition();
 	}
 
 	/**
@@ -48,11 +51,63 @@ public class Collider extends GameComponent
 		return false;
 	}
 
+	public Rectangle collidesWith(List<Rectangle> colliders){
+		for(Rectangle r: colliders){
+			if(!r.equals(this.collider) && collider.intersects(r))
+				return r;
+		}
+		return null;
+	}
+
 	/**
 		@return java.awt.Rectangle of this Colllider
 	 */
 	public Rectangle getRectangle(){
 		return this.collider;
+	}
+
+	public boolean topCollides(List<Rectangle> colliders){
+		for(Rectangle r: colliders){
+			for(Point p: detection.getTopPoints()){
+				if(r.contains(p))
+					return true;
+			}
+		}
+
+		return false;
+	}
+
+	public boolean bottomCollides(List<Rectangle> colliders){
+		for(Rectangle r: colliders){
+			for(Point p: detection.getBottomPoints()){
+				if(r.contains(p))
+					return true;
+			}
+		}
+
+		return false;
+	}
+
+	public boolean leftCollides(List<Rectangle> colliders){
+		for(Rectangle r: colliders){
+			for(Point p: detection.getLeftPoints()){
+				if(r.contains(p))
+					return true;
+			}
+		}
+
+		return false;
+	}
+
+	public boolean rightCollides(List<Rectangle> colliders){
+		for(Rectangle r: colliders){
+			for(Point p: detection.getRightPoints()){
+				if(r.contains(p))
+					return true;
+			}
+		}
+
+		return false;
 	}
 }
 
