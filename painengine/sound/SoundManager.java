@@ -42,6 +42,12 @@ public class SoundManager
 		}
 	}
 
+	public void stopMusic(){
+		if(music != null){
+			music.stop();
+		}
+	}
+
 	public void loop(boolean value){this.loop = value;}
 }
 
