@@ -6,6 +6,7 @@ import painengine.component.Collider;
 import painengine.component.Animation;
 import painengine.component.Animator;
 import painengine.component.Rigidbody;
+import painengine.sound.SoundManager;
 
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -27,6 +28,7 @@ public class Player extends GameObject{
     private SpriteSheet spriteSheet = new SpriteSheet("demo/assets/spritesheet.png", 4, 8);
     private Animator anim = new Animator(spriteSheet);
     private Rigidbody rb = new Rigidbody();
+    private SoundManager sm = new SoundManager();
 
     public Player(BufferedImage image, int x, int y){
         super(image, x, y);
@@ -67,6 +69,7 @@ public class Player extends GameObject{
         if(isKeyPressed(KeyEvent.VK_SPACE)){
             if(grounded){
                 rb.setVelocityY(jumpForce);
+                sm.playSound("demo/assets/jump.wav");
                 grounded = false;
             }
         }
