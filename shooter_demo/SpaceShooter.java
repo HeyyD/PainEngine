@@ -4,7 +4,7 @@ import painengine.Game;
 
 public class SpaceShooter extends Game{
 
-    private MovingBackground background = new MovingBackground();
+    private MovingBackground background;
 
     public SpaceShooter(String name, int width, int height){
         super(name, width, height);
@@ -12,6 +12,6 @@ public class SpaceShooter extends Game{
 
     @Override
     public void init(){
-        
+        background = new MovingBackground(getScreen().getStage());   
     }
 }
