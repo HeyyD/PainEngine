@@ -67,14 +67,6 @@ public class Game{
                 unprocessedTime -= UPDATE_LIMIT;
                 render = true;
 
-                //Update game objecst and components
-                /*for(GameObject go: screen.getStage().getGameObjects()){
-                    go.update();
-                    for(GameComponent gc: go.getComponents()){
-                        gc.run();
-                    }
-                }*/
-
                 for(int i = 0; i < screen.getStage().getGameObjects().size(); i++){
                     GameObject go = screen.getStage().getGameObjects().get(i);
                     go.update();

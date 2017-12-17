@@ -41,6 +41,11 @@ public class Stage{
         getCanvas().addSprite(o);
     }
 
+    public void removeGameObject(GameObject o){
+        gameObjects.remove(o);
+        getCanvas().removeSprite(o);
+    }
+
     /**
         Add sprite to canvas so that it can be drawn.
 
