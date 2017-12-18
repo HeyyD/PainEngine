@@ -4,6 +4,7 @@ import painengine.Stage;
 import painengine.gameobject.GameObject;
 import painengine.util.SpriteSheet;
 import painengine.component.Animation;
+import painengine.component.Collider;
 
 import java.util.ArrayList;
 
@@ -14,6 +15,7 @@ public class Player extends GameObject{
     private Stage hostStage = null;
     private float speed = 5;
     private boolean canShoot = true;
+    private Collider collider = new Collider();
     private ArrayList<Bullet> bullets = new ArrayList<>();
 
     public Player(SpriteSheet sheet, int x, int y){
@@ -23,6 +25,7 @@ public class Player extends GameObject{
 
         Animation animation = new Animation(sheet);
         addComponent(animation);
+        addComponent(collider);
 
     }
 
@@ -63,4 +66,8 @@ public class Player extends GameObject{
     }
 
     public void setStage(Stage stage) {this.hostStage = stage;}
+
+    public ArrayList<Bullet> getBullets() {return this.bullets;}
+
+    public Collider getCollider() {return this.collider;}
 }

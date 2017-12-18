@@ -30,6 +30,7 @@ public class SpaceShooter extends Game{
 
                 Enemy enemy = new Enemy("shooter_demo/assets/alien.png", x, 0);
                 enemy.setStage(getScreen().getStage());
+                enemy.setPlayer(player);
                 getScreen().getStage().addGameObject(enemy);
 
                 try{
