@@ -25,6 +25,11 @@ public abstract class GameObject extends Controllable
 		start();
 	}
 
+	public GameObject(String imagePath){
+		super(imagePath);
+		start();
+	}
+
 	public GameObject(BufferedImage image){
 		super(image);
 		start();

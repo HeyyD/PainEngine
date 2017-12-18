@@ -53,6 +53,15 @@ public class Sprite
 		image = null;
 	}
 
+	public Sprite(String imagePath){
+		setImage(imagePath);
+		setX(10);
+		setY(10);
+		setWidth(image.getWidth());
+		setHeight(image.getHeight());
+		this.image = image;
+	}
+
 	/**
 		Creates a Sprite from image
 
