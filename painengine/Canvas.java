@@ -59,6 +59,10 @@ public class Canvas extends JPanel
 		sprites.add(sprite);
 	}
 
+	public void removeSprite(Sprite sprite){
+		sprites.remove(sprite);
+	}
+
 	/**
 		@param width New width of the canvas
 	 */

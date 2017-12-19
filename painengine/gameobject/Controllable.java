@@ -10,7 +10,11 @@ abstract class Controllable extends Sprite implements KeyListener{
     protected Controllable(){
         super();
     }
-    
+
+    protected Controllable(String imagePath){
+        super(imagePath);
+    }
+
     protected Controllable(BufferedImage image){
         super(image);
     }
